@@ -15,8 +15,14 @@ from PIL import Image
 from .resolve import to_single_polygon
 
 
-def _safe(uid: str) -> str:
-    return re.sub(r"[^A-Za-z0-9._-]+", "__", uid)
+def _safe(uid: str, max_len: int = 96) -> str:
+    """Filesystem-safe, unique name. Long uids (Roboflow names reach 200+ chars) are cut and suffixed with
+    a hash so the full path stays under Windows' 260-character limit."""
+    name = re.sub(r"[^A-Za-z0-9._-]+", "__", uid)
+    if len(name) > max_len:
+        import hashlib
+        name = name[: max_len - 13] + "_" + hashlib.md5(uid.encode()).hexdigest()[:12]
+    return name
 
 
 def _write_one(args):

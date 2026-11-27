@@ -35,7 +35,7 @@ rider_merge:
   rider_overlap_thr: 0.10    # nhãn rider tường minh (Cityscapes/Mapillary/IDD/BDD)
   person_overlap_thr: 0.25   # nhãn "person" mơ hồ (COCO) -> chặt hơn
   dilate_frac: 0.08          # nới mask người lái (theo cạnh dài bbox) trước khi đo vùng tiếp giáp với xe
-  rider_feet_above_frac: 0.08 # @person: chân phải cao hơn đáy xe >= 8% chiều cao xe (người dắt xe = Pedestrian)
+  person_center_margin: 0.10  # @person: tâm người phải nằm trong bbox xe (nới 10%) + chồng lấn >= person_overlap_thr; người dắt xe đứng bên cạnh = Pedestrian
   drop_unmatched_generic_rider: true
 
 # Quy ước BTC: "đối tượng quá nhỏ (cạnh ngắn dưới khoảng 1,25% cạnh dài của ảnh)" KHÔNG gán.

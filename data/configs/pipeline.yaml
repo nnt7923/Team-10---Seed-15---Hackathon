@@ -13,9 +13,12 @@ workers: 8
 partial_label_policy: require_completion
 
 # ---- Teacher / SAM (cần GPU) ----
-sam_model: sam2.1_b.pt          # hoặc sam3.pt (xin quyền trên Hugging Face)
-teacher_model: null             # vd runs/teacher/yolo26x-seg/weights/best.pt
-teacher_conf: 0.5
+sam_model: models/sam2.1_b.pt   # hoặc sam3.pt (xin quyền trên Hugging Face)
+teacher_model: models/yolo26x-seg.pt   # pretrain COCO; sau này thay bằng teacher 11 lớp tự train
+teacher_label_map: coco         # coco: map tên lớp COCO -> token; bỏ trống nếu teacher 11 lớp
+teacher_sources: [vn_traffic_sign_hf, roboflow_traffic_vn, roboflow_vn_traffic_v2i, nuimages, tuk_tuk_rickshaw_hf]  # chỉ chạy teacher cho các nguồn này
+teacher_imgsz: 1024
+teacher_conf: 0.4
 
 # ---- Loại trùng ----
 dedupe:
@@ -28,6 +31,7 @@ conditions:
 
 # ---- Chia tập ----
 split:
+  val_fallback: true            # chưa có ảnh VN tự gán -> val/test lấy theo group từ mọi nguồn nhãn đầy đủ
   val_fraction: 0.15            # tính trên các group của nguồn use_for_val (CHỈ ảnh VN)
   test_fraction: 0.05
 

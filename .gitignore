@@ -1,0 +1,6 @@
+.env
+*.log
+*.pt
+data/du_lieu.zip
+models/*/submission.zip
+__pycache__/

@@ -28,6 +28,7 @@ conditions:
 
 # ---- Chia tập ----
 split:
+  val_fallback: true            # chưa có ảnh VN tự gán -> val/test lấy theo group từ mọi nguồn nhãn đầy đủ
   val_fraction: 0.25            # tính trên các group của nguồn use_for_val (CHỈ ảnh VN)
   test_fraction: 0.10
 

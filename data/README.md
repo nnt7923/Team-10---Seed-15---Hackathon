@@ -267,33 +267,38 @@ python scripts/simulate_balance.py
 
 **Với dữ liệu thật:**
 
-1. Xem danh sách nguồn và cách tải:
+1. **Tải** (bản sao Hugging Face, không cần đăng ký; đăng nhập `hf auth login` để tránh bị giới hạn lượt gọi):
    ```powershell
-   python scripts/download.py --list
+   python scripts/download_hf.py mapillary cityscapes vn_signs
    ```
-2. Tải vào `raw/`. COCO và Roboflow có script; các nguồn khác in hướng dẫn:
+   Repo có nhiều file nhỏ thì tải song song thêm từ cuối danh sách (file đã có sẽ được bỏ qua):
    ```powershell
-   python scripts/download.py coco2017_street
+   python scripts/download_hf_files.py ali-sh07/Mapillary-dataset training/v2.0/panoptic/ raw/mapillary --reverse
    ```
-3. Cắt video VN thành khung hình (mỗi video một thư mục = một group chống rò rỉ):
+   Nguồn khác: `python scripts/download.py --list` (COCO, Roboflow, hướng dẫn tải tay).
+   Video VN: `python scripts/extract_frames.py --videos D:/dashcam --out raw/vn_dashcam_self/images --fps 1`.
+   Ảnh VN gán tay (YOLO-seg) đặt vào `raw/vn_manual_labeled/{images,labels}/<lô>/`.
+2. Trong [configs/sources.yaml](configs/sources.yaml): `enabled: true` cho nguồn đã có.
+3. **Phân tích dữ liệu thô → `reports/raw_overview.html`** (chỉ đọc, không sửa gì):
    ```powershell
-   python scripts/extract_frames.py --videos D:/dashcam --out raw/vn_dashcam_self/images --fps 1
+   python scripts/analyze_raw.py
    ```
-4. Ảnh VN đã gán nhãn tay (CVAT/Label Studio xuất YOLO-seg) đặt vào `raw/vn_manual_labeled/{images,labels}/<lô>/`.
-5. Trong [configs/sources.yaml](configs/sources.yaml): `enabled: true` cho nguồn đã có, **đối chiếu `label_map` với tên nhãn thật**.
-6. Chuyển đổi và xem log ghép rider / tách chồng lấn:
+   Trang HTML tối giản gồm: số ảnh/instance/dung lượng; độ phủ 11 lớp **ước tính sau** ghép rider, tách chồng
+   lấn, lọc 1.25% (xếp chồng theo nguồn, so với mục tiêu); ma trận nguồn × lớp; cảnh báo tự động (lớp thiếu,
+   nhãn có vẻ là đối tượng nhưng **chưa có luật ánh xạ**, nhãn máy cần duyệt, chưa có val VN); thẻ từng nguồn
+   (độ phân giải, ảnh tối, tỉ lệ vật nhỏ, từ vựng nhãn gốc → token, ảnh mẫu có vẽ mask). Nguồn lớn được ước
+   tính trên mẫu ngẫu nhiên (`--sample 300`); nguồn đã có `work/converted/<id>.jsonl` được phân tích toàn bộ.
+   Nhãn cố ý bỏ (biển quảng cáo, xe ghi hình…) được khai báo rõ là `@ignore` để không bị báo nhầm.
+4. **Từng nguồn riêng** (GPU cho nguồn chỉ có box / thiếu lớp) — chạy ngay khi nguồn đó tải xong:
    ```powershell
-   python scripts/run_pipeline.py --config configs/pipeline.yaml --stages convert,resolve
+   python scripts/run_pipeline.py --stages convert,sam,complete --sources vn_traffic_sign_hf
    ```
-7. (GPU) Đặt `sam_model` và `teacher_model` trong [configs/pipeline.yaml](configs/pipeline.yaml):
+   Nguồn đủ nhãn chỉ cần `--stages convert --sources mapillary_vistas_v2,cityscapes`.
+5. **Các bước chung** (một lần cho mọi nguồn): ghép rider, tách chồng lấn, làm sạch, cân bằng, báo cáo, xuất `du_lieu.zip`:
    ```powershell
-   python scripts/run_pipeline.py --config configs/pipeline.yaml --stages sam,complete
+   python scripts/run_pipeline.py --stages resolve,clean,balance,report,export
    ```
-8. Làm sạch, cân bằng, báo cáo, xuất `du_lieu.zip`:
-   ```powershell
-   python scripts/run_pipeline.py --config configs/pipeline.yaml --stages clean,balance,report,export
-   ```
-9. QA bằng mắt (ví dụ class 5 của Mapillary):
+6. QA bằng mắt (ví dụ class 5 của Mapillary):
    ```powershell
    python scripts/visualize_labels.py --dataset dataset_out --source mapillary_vistas_v2 --cls 5 --n 12
    ```
@@ -342,10 +347,13 @@ vn_traffic_balanced/
 │   ├── quality.py            # pHash, ngày/đêm/thời tiết, loại trùng, chia tập theo group
 │   ├── balance.py            # chọn ảnh greedy + RFS + quota miền
 │   ├── stats.py              # thống kê, biểu đồ, REPORT.md
+│   ├── rawstats.py · html_report.py   # phân tích dữ liệu thô + trang HTML tối giản
 │   └── export.py             # YOLO-seg, metadata, datasets_report.md, du_lieu.zip
 ├── scripts/
 │   ├── run_pipeline.py       # chạy toàn bộ / từng bước
 │   ├── simulate_balance.py   # so sánh công thức cân bằng trên pool lớn mô phỏng
+│   ├── analyze_raw.py        # phân tích dữ liệu thô -> reports/raw_overview.html
+│   ├── download_hf.py · download_hf_files.py   # tải bản sao Hugging Face
 │   ├── download.py · extract_frames.py · visualize_labels.py
 │   ├── make_demo_data.py     # dữ liệu tổng hợp để kiểm thử
 │   └── draw_diagrams.py      # sinh docs/images/*.png

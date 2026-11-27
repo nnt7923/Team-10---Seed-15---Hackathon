@@ -230,6 +230,12 @@ def report_md(stages: dict, logs: dict, class_names: list[str], display: dict, c
     names = {"cleaned": "Pool sạch (trước cân bằng)", "train_pool": "Pool train hợp lệ",
              "selected": "Đã chọn (chưa lặp)", "train_effective": "Train hiệu dụng (sau RFS)",
              "val": "Val (chỉ VN)", "test": "Test (chỉ VN)"}
+    if (logs.get("balance") or {}).get("val_fallback_all_complete_sources"):
+        names["val"] = "Val (dự phòng: nguồn nhãn đủ, chưa có ảnh VN gán tay)"
+        names["test"] = "Test (dự phòng: nguồn nhãn đủ)"
+        L.append("> ⚠️ Chưa có ảnh VN gán tay theo guideline BTC → val/test được lấy theo nhóm từ các nguồn có nhãn "
+                 "người gán đầy đủ (IDD, Mapillary, Cityscapes). Điểm trên val này không phản ánh đúng tập test "
+                 "của cuộc thi; đối chiếu với bảng xếp hạng public.\n")
     present = [s for s in order if s in stages]
     L.append("## 1. Tổng quan theo giai đoạn\n")
     L.append("| Giai đoạn | Ảnh | Instance | Inst/ảnh | Max/min | Entropy chuẩn hoá ↑ | Gini ↓ | Class = 0 |")

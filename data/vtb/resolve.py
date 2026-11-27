@@ -47,6 +47,19 @@ def _union_polys(polys_list, s_full: float) -> list:
     return mask_to_polys(m, scale=s_full, offset=(x0 - 1, y0 - 1), min_area=2.0)
 
 
+def _ridden_default(rec: dict, insts: list, vehicles: list, ridden: set, log: Counter) -> None:
+    """Source flag `ridden_default`: a two-wheeler with no detected rider is still motorcyclist/cyclist.
+    For road-traffic footage where the box already covers bike + rider and far riders are too small for
+    the teacher to find (BTC: parked or walked bikes are class 4/6 — not expected on a moving road)."""
+    for vi in vehicles:
+        if not (rec.get("ridden_default") or insts[vi].get("ridden")):
+            continue
+        if vi not in ridden and insts[vi]["cls"] in TWO_WHEEL:
+            insts[vi]["cls"] = TWO_WHEEL[insts[vi]["cls"]]
+            insts[vi]["origin"] = insts[vi].get("origin", "human") + "+ridden_default"
+            log["ridden_default"] += 1
+
+
 def merge_riders(rec: dict, cfg: dict, log: Counter) -> None:
     rm = cfg["rider_merge"]
     insts = rec["instances"]
@@ -57,6 +70,7 @@ def merge_riders(rec: dict, cfg: dict, log: Counter) -> None:
     people = [i for i, it in enumerate(insts) if it["cls"] in ("@rider", "@rider_moto", "@rider_bike", "@person")
               and it.get("polys")]
     if not people:
+        _ridden_default(rec, insts, vehicles, set(), log)
         return
     assign: dict[int, list[int]] = {}
     unmatched = []
@@ -79,13 +93,16 @@ def merge_riders(rec: dict, cfg: dict, log: Counter) -> None:
             geometric = (vb[0] - 0.15 * vw <= cx <= vb[2] + 0.15 * vw  # rider centred over the bike
                          and rb[1] < vb[1] + 0.25 * (vb[3] - vb[1]))   # rider's head above the bike's top
             if p["cls"] == "@person":
-                # Ambiguous person (COCO): BTC rule "người dắt xe là Pedestrian". A rider sits ON the
-                # bike (feet clearly above the bike's bottom, centred inside it); a person walking a bike
-                # stands on the ground next to it (feet at the bike's bottom, centre beside it).
-                vh = vb[3] - vb[1]
-                geometric = (vb[0] <= cx <= vb[2]
-                             and rb[1] < vb[1]
-                             and rb[3] <= vb[3] - rm.get("rider_feet_above_frac", 0.08) * vh)
+                # Ambiguous person (COCO / teacher): BTC rule "người dắt xe là Pedestrian". A rider sits ON
+                # the bike: centred over it and covering a large part of it (from behind the rider hides
+                # most of the bike). A person walking a bike stands BESIDE it: centre outside / at the edge
+                # of the bike and little overlap. (A "feet above the bike's bottom" test was tried and
+                # failed on rear views, where the rider's feet reach the bike's bottom edge.)
+                vh, vw = vb[3] - vb[1], vb[2] - vb[0]
+                m = rm.get("person_center_margin", 0.10)
+                geometric = (vb[0] - m * vw <= cx <= vb[2] + m * vw
+                             and rb[1] < vb[1] + 0.25 * vh   # head above / at the bike's top (mask may include rider)
+                             and rb[3] <= vb[3] + 0.15 * vh)
             thr = rm["person_overlap_thr"] if p["cls"] == "@person" else rm["rider_overlap_thr"]
             if not geometric or ov < thr:
                 continue
@@ -125,6 +142,7 @@ def merge_riders(rec: dict, cfg: dict, log: Counter) -> None:
         else:
             p["cls"] = "@ignore"
             log["unmatched_rider_dropped"] += 1
+    _ridden_default(rec, insts, vehicles, set(assign), log)
     rec["instances"] = [it for i, it in enumerate(insts) if i not in drop] + new
 
 
@@ -180,6 +198,18 @@ def deoverlap(rec: dict, log: Counter) -> None:
 
 def resolve_record(rec: dict, classes, cls_cfg: dict, log: Counter) -> dict | None:
     """Merge riders, make masks non-overlapping, drop ignored/too-small instances."""
+    W0, H0 = rec["width"], rec["height"]
+    keep0 = []
+    for it in rec["instances"]:
+        # only two-wheelers / persons: footage is shot from a motorbike; a car touching the bottom edge
+        # is usually a real vehicle just ahead
+        if it.get("origin") == "teacher" and it.get("polys") and it["cls"] in ("motorcycle", "bicycle", "@person"):
+            b = polys_bbox(it["polys"])
+            if b[3] >= 0.97 * H0 and (b[2] - b[0]) >= 0.30 * W0:  # ego vehicle / camera holder
+                log["drop_ego_teacher"] += 1
+                continue
+        keep0.append(it)
+    rec["instances"] = keep0
     merge_riders(rec, cls_cfg, log)
     for it in rec["instances"]:
         if it["cls"] == "@person":
@@ -209,7 +239,8 @@ def resolve_record(rec: dict, classes, cls_cfg: dict, log: Counter) -> dict | No
         keep.append(it)
     rec["instances"] = keep
     labeled = set(rec.get("labeled_classes") or [])
-    rec["missing_classes"] = [c for c in classes.names if c not in labeled]
+    ok_missing = set(rec.get("accept_missing") or [])
+    rec["missing_classes"] = [c for c in classes.names if c not in labeled and c not in ok_missing]
     rec["needs_mask"] = any(not it.get("polys") for it in keep)
     rec["counts"] = {c: 0 for c in classes.names}
     for it in keep:

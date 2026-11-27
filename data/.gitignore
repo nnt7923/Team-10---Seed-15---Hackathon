@@ -5,3 +5,4 @@ demo/
 runs/
 *.pt
 __pycache__/
+*.log

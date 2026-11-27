@@ -125,12 +125,20 @@ def _hash01(s: str, seed: int) -> float:
 
 
 def assign_splits(records: list[dict], val_sources: set[str], val_frac: float, test_frac: float,
-                  seed: int) -> Counter:
+                  seed: int, fallback: bool = True) -> Counter:
     """Group-aware split. val/test come ONLY from `use_for_val` sources (Vietnamese, fully labeled)
-    so the metric mirrors the competition test set. Everything else is train-pool."""
+    so the metric mirrors the competition test set. Everything else is train-pool.
+
+    Fallback (no fully-labeled VN source available yet): val/test are drawn by group from ALL fully
+    labeled sources, and the log says so — the metric then measures foreign-street performance and
+    must be cross-checked with the public leaderboard."""
     log = Counter()
+    eligible_val = {r["source"] for r in records if r["source"] in val_sources and not r.get("missing_classes")}
+    if not eligible_val and fallback:
+        val_sources = {r["source"] for r in records if not r.get("missing_classes") and not r.get("completed")}
+        log["val_fallback_all_complete_sources"] = 1
     for r in records:
-        if r["source"] in val_sources and not r.get("missing_classes"):
+        if r["source"] in val_sources and not r.get("missing_classes") and not r.get("completed"):
             u = _hash01(r["group"], seed)
             r["split"] = "test" if u < test_frac else ("val" if u < test_frac + val_frac else "train")
         else:

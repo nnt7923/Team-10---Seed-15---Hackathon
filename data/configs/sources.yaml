@@ -97,6 +97,198 @@ sources:
     labeled_classes: [sign]          # các class khác KHÔNG được gán -> partial
     enabled: false
 
+  # Ảnh đường phố VN chỉ có box biển báo. SAM biến box thành mask; teacher yolo26x-seg (COCO) gán nháp
+  # ô tô/bus/xe tải/xe máy/xe đạp/người/đèn; resolve ghép người + xe theo luật BTC.
+  # COCO không có lớp "phương tiện khác" -> chấp nhận thiếu class 3 (accept_missing) để có miền VN.
+  - id: vn_traffic_sign_hf
+    name: "Vietnam Traffic Sign (HF: thanhhiepvos/vietnam_traffic_sign) + nhãn nháp teacher"
+    tier: A
+    domain: vn
+    priority: 80
+    homepage: "https://huggingface.co/datasets/thanhhiepvos/vietnam_traffic_sign"
+    download: {method: hf, command: "python scripts/download_hf.py vn_signs"}
+    license: "CC BY-SA 3.0 (theo thẻ dataset trên HF)"
+    citation: "thanhhiepvos, vietnam_traffic_sign, Hugging Face Datasets"
+    format: yolo_det
+    paths: {images: vn_traffic_sign_hf/archive/images, labels: vn_traffic_sign_hf/archive/labels,
+            names_file: vn_traffic_sign_hf/archive/classes_en.txt}
+    label_map: {"*": sign}
+    labeled_classes: [sign]
+    accept_missing: [other_vehicle]
+    use_for_val: false
+    enabled: true
+
+  # ================= Bộ dữ liệu nhóm tải lên Google Drive (27/11) =================
+  # Drive: https://drive.google.com/drive/folders/1zFSYZyxC4dTGdefRL5zciOVzylwaFBSK  (zip gốc giữ trong raw/_drive/)
+
+  # Ảnh đường VN, box 4 lớp phương tiện (xe máy chiếm đa số). Box xe máy phủ cả người lái -> SAM tạo mask,
+  # teacher COCO thêm người (@person) để resolve tách 4/5. Biển báo & đèn không được gán.
+  - id: roboflow_traffic_vn
+    name: "Roboflow Universe – Traffic_VN v1 (thiens-workspace-mryll)"
+    tier: A
+    domain: vn
+    priority: 85
+    homepage: "https://universe.roboflow.com/thiens-workspace-mryll/traffic_vn-2sdka/dataset/1"
+    download: {method: drive, file: "Traffic_VN.v1-v1.yolo26.zip"}
+    license: "CC BY 4.0"
+    citation: "thiens-workspace-mryll, Traffic_VN v1, Roboflow Universe"
+    format: yolo_det
+    paths: {images: roboflow_traffic_vn, labels: roboflow_traffic_vn, data_yaml: roboflow_traffic_vn/data.yaml}
+    group_regex: "([^/]+)$"
+    label_map: {Bus: bus, Car: car, Motorcycle: motorcycle, Truck: truck}
+    ridden_default: true        # camera quay mặt đường: xe máy đang chạy luôn có người (box đã bao người lái)
+    labeled_classes: [car, bus, truck, motorcycle]
+    accept_missing: [other_vehicle, sign]
+    use_for_val: false
+    enabled: true
+
+  # Ảnh đường VN, box 57 loại biển báo (ảnh đã bị Roboflow resize về 640x640).
+  - id: roboflow_vn_traffic_v2i
+    name: "Roboflow Universe – vn_traffic v2 (projectxla), biển báo VN"
+    tier: A
+    domain: vn
+    priority: 75
+    homepage: "https://universe.roboflow.com/projectxla/vn_traffic/dataset/2"
+    download: {method: drive, file: "vn_traffic.v2i.yolo26.zip"}
+    license: "CC BY 4.0"
+    citation: "projectxla, vn_traffic v2, Roboflow Universe"
+    format: yolo_det
+    paths: {images: roboflow_vn_traffic_v2i, labels: roboflow_vn_traffic_v2i, data_yaml: roboflow_vn_traffic_v2i/data.yaml}
+    group_regex: "([^/]+)$"
+    label_map: {"*": sign}
+    labeled_classes: [sign]
+    accept_missing: [other_vehicle]
+    use_for_val: false
+    enabled: true
+
+  # COCO 2017 cảnh phố, nhóm đã đổi sẵn sang 11 lớp YOLO-seg (đã ghép người lái).
+  # COCO không có lớp biển báo chung (chỉ stop sign) và không có "phương tiện khác" -> thiếu nhãn biển báo:
+  # ảnh nào có biển mà không gán sẽ dạy model rằng biển là nền. Cần teacher 11 lớp trước khi dùng.
+  - id: coco2017_street_yoloseg
+    name: "MS COCO 2017 – cảnh phố, nhóm đổi sang 11 lớp YOLO-seg"
+    tier: C
+    domain: global
+    priority: 40
+    homepage: "https://cocodataset.org/"
+    download: {method: drive, file: "coco2017_street_yoloseg.zip"}
+    license: "Annotations CC BY 4.0; ảnh theo license Flickr từng ảnh"
+    citation: "Lin et al., Microsoft COCO: Common Objects in Context, ECCV 2014"
+    format: yolo_seg
+    paths: {images: coco2017_street_yoloseg/images, labels: coco2017_street_yoloseg/labels, data_yaml: coco2017_street_yoloseg/data.yaml}
+    label_map: {car: car, bus: bus, truck: truck, other_vehicle: other_vehicle, motorcycle: motorcycle,
+                motorcyclist: motorcyclist, bicycle: bicycle, cyclist: cyclist, pedestrian: pedestrian,
+                sign: sign, traffic_light: traffic_light}
+    labeled_classes: [car, bus, truck, motorcycle, motorcyclist, bicycle, cyclist, pedestrian, traffic_light]
+    accept_missing: [other_vehicle]
+    max_images: 6000
+    use_for_val: false
+    enabled: false   # v1: tắt vì còn thiếu nhãn (bật lại cho v2)
+
+  # BDD100K 10k: CHỈ CÓ ẢNH (không có file nhãn) -> cần nhãn chính thức hoặc teacher 11 lớp.
+  - id: bdd100k_10k_images
+    name: "BDD100K – 10k ảnh (chưa có nhãn)"
+    tier: C
+    domain: global
+    priority: 30
+    homepage: "https://bdd-data.berkeley.edu/"
+    download: {method: drive, file: "bdd100k_10k_images.zip"}
+    license: "BDD100K license (xem file LICENSE chính thức)"
+    citation: "Yu et al., BDD100K: A Diverse Driving Dataset for Heterogeneous Multitask Learning, CVPR 2020"
+    format: images_only
+    paths: {images: bdd100k_10k_images}
+    group_regex: "([^/]+)$"
+    label_map: {}
+    labeled_classes: []
+    use_for_val: false
+    enabled: false   # v1: tắt vì còn thiếu nhãn (bật lại cho v2)
+
+  # nuImages v1.0 (nuScenes, Singapore + Boston): instance masks + attribute cycle.with_rider.
+  # Chỉ lấy 16k key frame có lớp hiếm (bus, xe đạp, xe công trình/rơ-moóc, xe tải, xe máy) — scripts/nuimages_select.py.
+  # Không có nhãn biển báo / đèn: teacher COCO bổ sung đèn; biển báo chấp nhận thiếu (ghi rõ trong báo cáo).
+  - id: nuimages
+    name: "nuImages v1.0 – tập con 16k ảnh có lớp hiếm"
+    tier: C
+    domain: global
+    priority: 55
+    homepage: "https://www.nuscenes.org/nuimages (bản sao HF: https://huggingface.co/datasets/Myszz/NuImages)"
+    download: {method: hf, command: "hf_hub_download Myszz/NuImages nuimages-v1.0-all-{metadata,samples}.tgz; python scripts/nuimages_select.py"}
+    license: "CC BY-NC-SA 4.0 (nuScenes terms of use, phi thương mại)"
+    citation: "Caesar et al., nuScenes: A multimodal dataset for autonomous driving, CVPR 2020"
+    format: nuimages
+    paths: {root: nuimages, images: nuimages/samples}
+    label_map:
+      "vehicle.car": car
+      "vehicle.emergency.*": car          # xe cứu thương dạng van / xe cảnh sát -> Car (BTC)
+      "vehicle.bus.*": bus
+      "vehicle.truck": truck
+      "vehicle.trailer": other_vehicle    # rơ-moóc (BTC: Other vehicle)
+      "vehicle.construction": other_vehicle
+      "vehicle.motorcycle": motorcycle    # + thuộc tính cycle.with_rider -> 5
+      "vehicle.bicycle": bicycle          # + thuộc tính cycle.with_rider -> 7
+      "human.pedestrian.adult": "@person"
+      "human.pedestrian.child": "@person"
+      "human.pedestrian.construction_worker": "@person"
+      "human.pedestrian.police_officer": "@person"
+      "human.pedestrian.personal_mobility": "@ignore"
+      "human.pedestrian.stroller": "@ignore"
+      "human.pedestrian.wheelchair": "@ignore"
+      "vehicle.ego": "@ignore"
+      "static_object.bicycle_rack": "@ignore"
+    labeled_classes: [car, bus, truck, other_vehicle, motorcycle, motorcyclist, bicycle, cyclist, pedestrian]
+    accept_missing: [sign]
+    use_for_val: false
+    enabled: false   # v1: tắt vì còn thiếu nhãn (bật lại cho v2)
+
+  # Tuk-tuk / rickshaw (HF, ghép từ nhiều bộ Roboflow, CC BY 4.0) — nguồn class 3 kiểu châu Á (xe ba bánh,
+  # máy kéo). Lớp số không tên đã được xác định bằng mắt: 0,4 = auto-rickshaw; 5 = máy kéo/rơ-moóc nông nghiệp;
+  # 1 = bus; 2 = ô tô; 6 = xe tải. Chỉ class 3 coi là gán đủ; teacher bổ sung phần còn lại (không trùng box có sẵn).
+  - id: tuk_tuk_rickshaw_hf
+    name: "Tuk Tuk & Rickshaw Detection (HF shravya11/tuk-tuk-detection)"
+    tier: B
+    domain: asia
+    priority: 45
+    homepage: "https://huggingface.co/datasets/shravya11/tuk-tuk-detection"
+    download: {method: hf, command: "snapshot_download shravya11/tuk-tuk-detection -> raw/tuk_tuk_hf"}
+    license: "CC BY 4.0"
+    citation: "shravya11, Tuk Tuk and Rickshaw Detection, Hugging Face Datasets (from Roboflow Universe)"
+    format: coco_bbox
+    prefix_split: true
+    sample_images: 1800         # chỉ lấy ngẫu nhiên 1,800/5,890 ảnh (giới hạn thời gian GPU)
+    paths:
+      images: tuk_tuk_hf
+      annotations: [tuk_tuk_hf/train/_annotations.coco.json, tuk_tuk_hf/valid/_annotations.coco.json,
+                    tuk_tuk_hf/test/_annotations.coco.json, tuk_tuk_hf/rickshaw/train/_annotations.coco.json,
+                    tuk_tuk_hf/rickshaw/valid/_annotations.coco.json, tuk_tuk_hf/rickshaw/test/_annotations.coco.json]
+    group_regex: "([^/]+)$"
+    label_map: {tuktuk: other_vehicle, Rickshaw: other_vehicle, auto-rickshaw: other_vehicle, auto: other_vehicle,
+                "0": other_vehicle, "4": other_vehicle, "5": other_vehicle,
+                "1": bus, bus: bus, "2": car, car: car, Car: car, "6": truck, truck: truck, lorry: truck,
+                motorcycle: motorcycle, bicycle: bicycle, bike: bicycle, Bike: bicycle}
+    labeled_classes: [other_vehicle]
+    accept_missing: [sign]
+    use_for_val: false
+    enabled: true
+
+  # ACDC "half" (nhóm lấy 1/2 mỗi điều kiện): CHỈ CÓ ẢNH rgb_anon, không có gt_panoptic.
+  # train 811 · val 209 · test 1,009 (test của ACDC không công bố nhãn). manifest.csv giữ đường dẫn gốc.
+  # Cần gt_panoptic (train+val) từ acdc.vision.ee.ethz.ch hoặc teacher 11 lớp trước khi dùng để train.
+  - id: acdc_half
+    name: "ACDC – nửa mỗi điều kiện (fog/night/rain/snow), chưa có nhãn"
+    tier: D
+    domain: global
+    priority: 60
+    homepage: "https://acdc.vision.ee.ethz.ch/"
+    download: {method: drive, file: "acdc_half.zip"}
+    license: "ACDC license (phi thương mại)"
+    citation: "Sakaridis et al., ACDC: The Adverse Conditions Dataset with Correspondences, ICCV 2021 / T-PAMI 2025"
+    format: images_only
+    paths: {images: acdc_half}
+    attr_from_path: {weather: "(fog|night|rain|snow)"}
+    label_map: {}
+    labeled_classes: []
+    use_for_val: false
+    enabled: false   # v1: tắt vì còn thiếu nhãn (bật lại cho v2)
+
   - id: vn_dashcam_self
     name: "Video dashcam Việt Nam tự thu (cắt khung hình)"
     tier: E
@@ -121,7 +313,8 @@ sources:
     domain: asia
     priority: 70
     homepage: "https://inai.iiit.ac.in/domains/idd.html"
-    download: {method: manual, instructions: "Đăng ký tài khoản IDD, tải 'IDD Segmentation (IDD 20k Part I/II)', giải nén vào raw/idd/"}
+    download: {method: drive, file: "IDD_Segmentation.zip",
+               note: "Nhóm tải lên Drive; giải nén train + val vào raw/idd/{gtFine,leftImg8bit} (test không có nhãn)"}
     license: "IDD license (phi thương mại, nghiên cứu)"
     citation: "Varma et al., IDD: A Dataset for Exploring Problems of Autonomous Navigation in Unconstrained Environments, WACV 2019"
     format: polygons_json
@@ -144,8 +337,13 @@ sources:
       "traffic sign": sign
       "traffic light": traffic_light
       "*group": "@ignore"
+      # cố ý bỏ (BTC không gán):
+      "ego vehicle": "@ignore"
+      "license plate": "@ignore"
+      billboard: "@ignore"        # biển quảng cáo
+      animal: "@ignore"
     labeled_classes: *ALL
-    enabled: false
+    enabled: true
 
   # ------------------------------------------------------ Tier C: bộ lớn
   - id: mapillary_vistas_v2
@@ -153,15 +351,15 @@ sources:
     tier: C
     domain: global
     priority: 75
-    homepage: "https://www.mapillary.com/dataset/vistas"
-    download: {method: manual, instructions: "Đăng ký tải Research edition; giải nén vào raw/mapillary/{training,validation}"}
+    homepage: "https://www.mapillary.com/dataset/vistas (bản sao HF: https://huggingface.co/datasets/ali-sh07/Mapillary-dataset)"
+    download: {method: hf, command: "python scripts/download_hf.py mapillary",
+               note: "Bản sao HF có 9,999/18,000 ảnh training; polygons v2.0 thiếu nên dùng nhãn panoptic v2.0 (không chồng lấn sẵn)"}
     license: "CC BY-NC-SA 4.0 (Research edition)"
     citation: "Neuhold et al., The Mapillary Vistas Dataset for Semantic Understanding of Street Scenes, ICCV 2017"
-    format: polygons_json
-    paths: {annotations: mapillary/training/v2.0/polygons, images: mapillary/training/images}
-    name_replace: [".json", ".jpg"]
-    occlusion_order: back_to_front
-    label_map:
+    format: coco_panoptic
+    paths: {annotations: mapillary/training/v2.0/panoptic/panoptic_2020.json,
+            panoptic_png: mapillary/training/v2.0/panoptic, images: mapillary/training/images}
+    label_map: &MAPILLARY_MAP
       "human--person--individual": pedestrian
       "human--person--person-group": "@ignore"
       "human--rider--motorcyclist": "@rider_moto"
@@ -181,16 +379,45 @@ sources:
       "object--traffic-light--*": traffic_light
       "object--traffic-sign--*back*": "@ignore"
       "object--traffic-sign--*": sign
+      # cố ý bỏ (BTC không gán) — khai báo rõ để báo cáo không coi là "quên ánh xạ":
+      "object--sign--*": "@ignore"                    # biển quảng cáo / cửa hàng / thông tin, không phải biển giao thông
+      "object--support--traffic-sign-frame": "@ignore" # khung/cột đỡ biển: BTC chỉ phủ mặt biển
+      "object--street-light": "@ignore"               # đèn đường, không phải đèn tín hiệu
+      "void--ego-vehicle": "@ignore"                  # xe ghi hình
+      "void--car-mount": "@ignore"
+      "object--vehicle--boat": "@ignore"
+      "object--bike-rack": "@ignore"
+      "marking--*": "@ignore"                         # vạch sơn (kể cả biểu tượng xe đạp trên mặt đường)
+      "marking-only--*": "@ignore"
     labeled_classes: *ALL
-    enabled: false
+    enabled: true
+
+  # Bản sao HF có ảnh và nhãn panoptic là 2 tập con KHÁC NHAU (chỉ 5,390 ảnh có cả hai). 752 ảnh còn lại có
+  # file polygons v2.0 -> đọc bằng polygons_json (vẽ lại theo thứ tự che khuất), cùng ánh xạ nhãn.
+  - id: mapillary_vistas_v2_poly
+    name: "Mapillary Vistas v2.0 – phần chỉ có polygons (752 ảnh)"
+    tier: C
+    domain: global
+    priority: 74
+    homepage: "https://www.mapillary.com/dataset/vistas (bản sao HF: https://huggingface.co/datasets/ali-sh07/Mapillary-dataset)"
+    download: {method: hf, note: "training/v2.0/polygons/<id>.json cho ảnh không có panoptic"}
+    license: "CC BY-NC-SA 4.0 (Research edition)"
+    citation: "Neuhold et al., The Mapillary Vistas Dataset for Semantic Understanding of Street Scenes, ICCV 2017"
+    format: polygons_json
+    paths: {annotations: mapillary/training/v2.0/polygons, images: mapillary/training/images}
+    name_replace: [".json", ".jpg"]
+    occlusion_order: back_to_front
+    label_map: *MAPILLARY_MAP
+    labeled_classes: *ALL
+    enabled: true
 
   - id: cityscapes
     name: "Cityscapes (gtFine)"
     tier: C
     domain: global
     priority: 65
-    homepage: "https://www.cityscapes-dataset.com/"
-    download: {method: manual, instructions: "Đăng ký, tải gtFine_trainvaltest.zip + leftImg8bit_trainvaltest.zip vào raw/cityscapes/"}
+    homepage: "https://www.cityscapes-dataset.com/ (bản sao HF: https://huggingface.co/datasets/tackhwa/cityscapes)"
+    download: {method: hf, command: "python scripts/download_hf.py cityscapes", note: "chỉ train + val (test không có nhãn)"}
     license: "Cityscapes license (phi thương mại)"
     citation: "Cordts et al., The Cityscapes Dataset for Semantic Urban Scene Understanding, CVPR 2016"
     format: polygons_json
@@ -210,10 +437,12 @@ sources:
       bicycle: bicycle
       "traffic sign": sign
       "traffic light": traffic_light
+      "ego vehicle": "@ignore"      # xe ghi hình
+      "license plate": "@ignore"
       "*group": "@ignore"
     labeled_classes: *ALL
     max_images: 3000                 # đường phố Đức: giới hạn để không lấn miền VN
-    enabled: false
+    enabled: true
 
   - id: bdd100k_ins_seg
     name: "BDD100K – Instance Segmentation 10K"

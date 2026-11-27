@@ -32,19 +32,6 @@ trước / sau cân bằng** và **bảng bộ dữ liệu dùng thẳng cho sli
 
 ---
 
-## 0. Tình hình cuộc thi (đọc trước)
-
-Theo trang [competition.antco.ai](https://competition.antco.ai/) (đọc ngày 27/11/2026):
-
-| Điểm | Hệ quả cho pipeline |
-|---|---|
-| **BTC không cấp dữ liệu train**, chỉ có 10 ảnh mẫu *tổng hợp* | Nguồn chuẩn vàng là **`vn_manual_labeled`**: 200–300+ ảnh VN thật do đội tự gán theo guideline (SAM 3 vẽ nháp, người sửa, người thứ hai duyệt). Đây là **nguồn duy nhất cho val/test** |
-| Đóng nộp **10:30 ngày 28/11**, công bố private 11:00, thuyết trình 11:30 | Ưu tiên nguồn tải được ngay. Cityscapes và IDD phải chờ duyệt tài khoản nên chỉ dùng nếu đã có sẵn |
-| 20 lượt nộp, mỗi lần một bài đang chấm; chọn tối đa 2 bài cho private | Nộp sớm để có mốc; dùng public leaderboard làm thước đo thứ hai |
-| **Thứ hạng = 50% điểm private + 50% thuyết trình** | Slide phải có quy trình dữ liệu và **mọi bộ công khai đã dùng: tên, link, license, số ảnh đã dùng, cách ánh xạ 11 lớp**. Bảng này được sinh tự động tại `metadata/datasets_report.md` |
-| Seed của đội: **15** (`TEAM_ID` trong notebook) | Pipeline dùng `seed: 15` |
-| Nộp `model.onnx` (fp32, imgsz 640) trong zip ≤ 42 MB, xuất bằng notebook mẫu | Bước 1 của notebook phải dùng `data.yaml` của ta (mục 10) |
-
 ## 1. 11 lớp & quy ước BTC
 
 | ID | Class | Định nghĩa BTC (tóm tắt) | Ảnh hưởng tới pipeline |

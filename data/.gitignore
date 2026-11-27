@@ -1,0 +1,7 @@
+raw/
+work/
+dataset_out/
+demo/
+runs/
+*.pt
+__pycache__/

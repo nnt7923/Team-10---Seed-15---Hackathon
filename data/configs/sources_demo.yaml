@@ -1,0 +1,91 @@
+# Registry cho DỮ LIỆU DEMO TỔNG HỢP (scripts/make_demo_data.py). Mỗi nguồn mô phỏng 1 định dạng thật.
+ALL: &ALL [car, bus, truck, other_vehicle, motorcycle, motorcyclist, bicycle, cyclist, pedestrian, sign, traffic_light]
+sources:
+  - id: demo_vn
+    name: "[DEMO] mô phỏng ảnh VN tự gán nhãn (YOLO-seg, đã gộp rider)"
+    tier: A
+    domain: vn
+    priority: 100
+    homepage: null
+    download: {method: generated}
+    license: "synthetic"
+    format: yolo_seg
+    paths: {images: demo_vn/images, labels: demo_vn/labels}
+    label_map: {"0": car, "1": bus, "2": truck, "3": other_vehicle, "4": motorcycle, "5": motorcyclist,
+                "6": bicycle, "7": cyclist, "8": pedestrian, "9": sign, "10": traffic_light}
+    labeled_classes: *ALL
+    use_for_val: true
+    enabled: true
+
+  - id: demo_mapillary
+    name: "[DEMO] mô phỏng Mapillary v2 (polygons json, rider tách riêng)"
+    tier: C
+    domain: global
+    priority: 75
+    download: {method: generated}
+    license: "synthetic"
+    format: polygons_json
+    paths: {annotations: demo_mapillary/polygons, images: demo_mapillary/images}
+    name_replace: [".json", ".jpg"]
+    occlusion_order: back_to_front
+    label_map:
+      "human--person--individual": pedestrian
+      "human--rider--motorcyclist": "@rider_moto"
+      "human--rider--bicyclist": "@rider_bike"
+      "object--vehicle--car": car
+      "object--vehicle--bus": bus
+      "object--vehicle--truck": truck
+      "object--vehicle--motorcycle": motorcycle
+      "object--vehicle--bicycle": bicycle
+      "object--vehicle--other-vehicle": other_vehicle
+      "object--traffic-light--*": traffic_light
+      "object--traffic-sign--*back*": "@ignore"
+      "object--traffic-sign--*": sign
+    labeled_classes: *ALL
+    max_images: 150
+    enabled: true
+
+  - id: demo_coco
+    name: "[DEMO] mô phỏng COCO (person mơ hồ, không có biển báo)"
+    tier: C
+    domain: global
+    priority: 40
+    download: {method: generated}
+    license: "synthetic"
+    format: coco
+    paths: {annotations: demo_coco/instances.json, images: demo_coco/images}
+    select: {min_target_instances: 3, require_any: [car, bus, truck, motorcycle, bicycle, traffic_light]}
+    label_map: {person: "@person", bicycle: bicycle, car: car, motorcycle: motorcycle, bus: bus, truck: truck,
+                "traffic light": traffic_light}
+    labeled_classes: [car, bus, truck, motorcycle, motorcyclist, bicycle, cyclist, pedestrian, traffic_light]
+    enabled: true
+
+  - id: demo_bdd
+    name: "[DEMO] mô phỏng BDD100K ins-seg (có thuộc tính thời tiết)"
+    tier: C
+    domain: global
+    priority: 60
+    download: {method: generated}
+    license: "synthetic"
+    format: bdd_scalabel
+    paths: {annotations: demo_bdd/ins_seg.json, images: demo_bdd/images}
+    label_map: {pedestrian: pedestrian, rider: "@rider", car: car, truck: truck, bus: bus, motorcycle: motorcycle,
+                bicycle: bicycle, "other vehicle": other_vehicle}
+    labeled_classes: *ALL     # demo: coi như đầy đủ để minh hoạ dữ liệu mưa/đêm
+    enabled: true
+
+  - id: demo_acdc
+    name: "[DEMO] mô phỏng ACDC (COCO-panoptic, fog/night/rain)"
+    tier: D
+    domain: global
+    priority: 65
+    download: {method: generated}
+    license: "synthetic"
+    format: coco_panoptic
+    paths: {annotations: demo_acdc/panoptic.json, panoptic_png: demo_acdc/panoptic, images: demo_acdc/rgb}
+    attr_from_path: {weather: "(fog|night|rain|snow)"}
+    split_components: [sign, traffic_light]
+    label_map: {person: pedestrian, rider: "@rider", car: car, truck: truck, bus: bus, motorcycle: motorcycle,
+                bicycle: bicycle, "traffic sign": sign, "traffic light": traffic_light}
+    labeled_classes: *ALL
+    enabled: true

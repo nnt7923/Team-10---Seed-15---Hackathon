@@ -1,0 +1,8 @@
+numpy
+opencv-python
+pillow
+matplotlib
+pyyaml
+imagehash
+ultralytics>=8.4
+# tuy chon: roboflow (tai du lieu Roboflow)

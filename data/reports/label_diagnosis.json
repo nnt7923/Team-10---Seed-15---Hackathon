@@ -1,0 +1,3481 @@
+{
+ "weights": "../../best.pt",
+ "conf": 0.5,
+ "sources": {
+  "cityscapes": {
+   "images": 150,
+   "per_class": {
+    "Car": {
+     "labels": 788,
+     "preds": 502,
+     "extra_rate": 0.098,
+     "missed_rate": 0.425
+    },
+    "Bus": {
+     "labels": 25,
+     "preds": 8,
+     "extra_rate": 0.25,
+     "missed_rate": 0.76
+    },
+    "Truck": {
+     "labels": 30,
+     "preds": 6,
+     "extra_rate": 0.333,
+     "missed_rate": 0.867
+    },
+    "Other vehicle": {
+     "labels": 15,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Motorcycle": {
+     "labels": 21,
+     "preds": 1,
+     "extra_rate": 1.0,
+     "missed_rate": 1.0
+    },
+    "Motorcyclist": {
+     "labels": 11,
+     "preds": 5,
+     "extra_rate": 0.0,
+     "missed_rate": 0.545
+    },
+    "Bicycle": {
+     "labels": 158,
+     "preds": 10,
+     "extra_rate": 0.2,
+     "missed_rate": 0.949
+    },
+    "Cyclist": {
+     "labels": 82,
+     "preds": 39,
+     "extra_rate": 0.128,
+     "missed_rate": 0.585
+    },
+    "Pedestrian": {
+     "labels": 565,
+     "preds": 226,
+     "extra_rate": 0.084,
+     "missed_rate": 0.634
+    },
+    "Sign": {
+     "labels": 394,
+     "preds": 154,
+     "extra_rate": 0.234,
+     "missed_rate": 0.701
+    },
+    "Traffic light": {
+     "labels": 230,
+     "preds": 39,
+     "extra_rate": 0.154,
+     "missed_rate": 0.857
+    }
+   }
+  },
+  "idd_segmentation": {
+   "images": 150,
+   "per_class": {
+    "Car": {
+     "labels": 486,
+     "preds": 279,
+     "extra_rate": 0.075,
+     "missed_rate": 0.469
+    },
+    "Bus": {
+     "labels": 107,
+     "preds": 51,
+     "extra_rate": 0.098,
+     "missed_rate": 0.57
+    },
+    "Truck": {
+     "labels": 184,
+     "preds": 59,
+     "extra_rate": 0.271,
+     "missed_rate": 0.766
+    },
+    "Other vehicle": {
+     "labels": 251,
+     "preds": 56,
+     "extra_rate": 0.071,
+     "missed_rate": 0.793
+    },
+    "Motorcycle": {
+     "labels": 131,
+     "preds": 14,
+     "extra_rate": 0.214,
+     "missed_rate": 0.916
+    },
+    "Motorcyclist": {
+     "labels": 272,
+     "preds": 171,
+     "extra_rate": 0.082,
+     "missed_rate": 0.423
+    },
+    "Bicycle": {
+     "labels": 1,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Cyclist": {
+     "labels": 4,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Pedestrian": {
+     "labels": 233,
+     "preds": 66,
+     "extra_rate": 0.03,
+     "missed_rate": 0.725
+    },
+    "Sign": {
+     "labels": 41,
+     "preds": 5,
+     "extra_rate": 0.2,
+     "missed_rate": 0.902
+    },
+    "Traffic light": {
+     "labels": 7,
+     "preds": 2,
+     "extra_rate": 0.5,
+     "missed_rate": 0.857
+    }
+   }
+  },
+  "mapillary_vistas_v2": {
+   "images": 150,
+   "per_class": {
+    "Car": {
+     "labels": 801,
+     "preds": 508,
+     "extra_rate": 0.063,
+     "missed_rate": 0.406
+    },
+    "Bus": {
+     "labels": 50,
+     "preds": 14,
+     "extra_rate": 0.429,
+     "missed_rate": 0.84
+    },
+    "Truck": {
+     "labels": 90,
+     "preds": 13,
+     "extra_rate": 0.231,
+     "missed_rate": 0.889
+    },
+    "Other vehicle": {
+     "labels": 32,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Motorcycle": {
+     "labels": 21,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Motorcyclist": {
+     "labels": 31,
+     "preds": 15,
+     "extra_rate": 0.0,
+     "missed_rate": 0.516
+    },
+    "Bicycle": {
+     "labels": 31,
+     "preds": 1,
+     "extra_rate": 0.0,
+     "missed_rate": 0.968
+    },
+    "Cyclist": {
+     "labels": 31,
+     "preds": 4,
+     "extra_rate": 0.25,
+     "missed_rate": 0.903
+    },
+    "Pedestrian": {
+     "labels": 137,
+     "preds": 41,
+     "extra_rate": 0.22,
+     "missed_rate": 0.766
+    },
+    "Sign": {
+     "labels": 304,
+     "preds": 119,
+     "extra_rate": 0.193,
+     "missed_rate": 0.684
+    },
+    "Traffic light": {
+     "labels": 242,
+     "preds": 71,
+     "extra_rate": 0.07,
+     "missed_rate": 0.727
+    }
+   }
+  },
+  "mapillary_vistas_v2_poly": {
+   "images": 150,
+   "per_class": {
+    "Car": {
+     "labels": 736,
+     "preds": 467,
+     "extra_rate": 0.086,
+     "missed_rate": 0.42
+    },
+    "Bus": {
+     "labels": 55,
+     "preds": 19,
+     "extra_rate": 0.211,
+     "missed_rate": 0.727
+    },
+    "Truck": {
+     "labels": 94,
+     "preds": 21,
+     "extra_rate": 0.286,
+     "missed_rate": 0.84
+    },
+    "Other vehicle": {
+     "labels": 21,
+     "preds": 2,
+     "extra_rate": 0.0,
+     "missed_rate": 0.905
+    },
+    "Motorcycle": {
+     "labels": 34,
+     "preds": 5,
+     "extra_rate": 0.2,
+     "missed_rate": 0.882
+    },
+    "Motorcyclist": {
+     "labels": 38,
+     "preds": 14,
+     "extra_rate": 0.143,
+     "missed_rate": 0.684
+    },
+    "Bicycle": {
+     "labels": 29,
+     "preds": 3,
+     "extra_rate": 0.0,
+     "missed_rate": 0.897
+    },
+    "Cyclist": {
+     "labels": 30,
+     "preds": 9,
+     "extra_rate": 0.0,
+     "missed_rate": 0.7
+    },
+    "Pedestrian": {
+     "labels": 227,
+     "preds": 75,
+     "extra_rate": 0.08,
+     "missed_rate": 0.696
+    },
+    "Sign": {
+     "labels": 290,
+     "preds": 84,
+     "extra_rate": 0.131,
+     "missed_rate": 0.748
+    },
+    "Traffic light": {
+     "labels": 267,
+     "preds": 63,
+     "extra_rate": 0.079,
+     "missed_rate": 0.783
+    }
+   }
+  },
+  "roboflow_traffic_vn": {
+   "images": 26,
+   "per_class": {
+    "Car": {
+     "labels": 94,
+     "preds": 53,
+     "extra_rate": 0.075,
+     "missed_rate": 0.479
+    },
+    "Bus": {
+     "labels": 6,
+     "preds": 1,
+     "extra_rate": 0.0,
+     "missed_rate": 0.833
+    },
+    "Truck": {
+     "labels": 33,
+     "preds": 12,
+     "extra_rate": 0.083,
+     "missed_rate": 0.667
+    },
+    "Other vehicle": {
+     "labels": 0,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": null
+    },
+    "Motorcycle": {
+     "labels": 0,
+     "preds": 4,
+     "extra_rate": 1.0,
+     "missed_rate": null
+    },
+    "Motorcyclist": {
+     "labels": 168,
+     "preds": 52,
+     "extra_rate": 0.0,
+     "missed_rate": 0.69
+    },
+    "Bicycle": {
+     "labels": 0,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": null
+    },
+    "Cyclist": {
+     "labels": 1,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Pedestrian": {
+     "labels": 7,
+     "preds": 1,
+     "extra_rate": 1.0,
+     "missed_rate": 1.0
+    },
+    "Sign": {
+     "labels": 0,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": null
+    },
+    "Traffic light": {
+     "labels": 0,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": null
+    }
+   }
+  },
+  "roboflow_vn_traffic_v2i": {
+   "images": 150,
+   "per_class": {
+    "Car": {
+     "labels": 93,
+     "preds": 51,
+     "extra_rate": 0.157,
+     "missed_rate": 0.538
+    },
+    "Bus": {
+     "labels": 9,
+     "preds": 3,
+     "extra_rate": 0.333,
+     "missed_rate": 0.778
+    },
+    "Truck": {
+     "labels": 49,
+     "preds": 27,
+     "extra_rate": 0.259,
+     "missed_rate": 0.592
+    },
+    "Other vehicle": {
+     "labels": 0,
+     "preds": 1,
+     "extra_rate": 1.0,
+     "missed_rate": null
+    },
+    "Motorcycle": {
+     "labels": 55,
+     "preds": 12,
+     "extra_rate": 0.083,
+     "missed_rate": 0.8
+    },
+    "Motorcyclist": {
+     "labels": 86,
+     "preds": 96,
+     "extra_rate": 0.375,
+     "missed_rate": 0.302
+    },
+    "Bicycle": {
+     "labels": 6,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Cyclist": {
+     "labels": 19,
+     "preds": 10,
+     "extra_rate": 0.2,
+     "missed_rate": 0.579
+    },
+    "Pedestrian": {
+     "labels": 185,
+     "preds": 40,
+     "extra_rate": 0.225,
+     "missed_rate": 0.832
+    },
+    "Sign": {
+     "labels": 274,
+     "preds": 247,
+     "extra_rate": 0.117,
+     "missed_rate": 0.204
+    },
+    "Traffic light": {
+     "labels": 26,
+     "preds": 9,
+     "extra_rate": 0.0,
+     "missed_rate": 0.654
+    }
+   }
+  },
+  "tuk_tuk_rickshaw_hf": {
+   "images": 150,
+   "per_class": {
+    "Car": {
+     "labels": 157,
+     "preds": 62,
+     "extra_rate": 0.081,
+     "missed_rate": 0.637
+    },
+    "Bus": {
+     "labels": 58,
+     "preds": 3,
+     "extra_rate": 1.0,
+     "missed_rate": 1.0
+    },
+    "Truck": {
+     "labels": 97,
+     "preds": 19,
+     "extra_rate": 0.316,
+     "missed_rate": 0.866
+    },
+    "Other vehicle": {
+     "labels": 280,
+     "preds": 159,
+     "extra_rate": 0.22,
+     "missed_rate": 0.557
+    },
+    "Motorcycle": {
+     "labels": 48,
+     "preds": 7,
+     "extra_rate": 0.143,
+     "missed_rate": 0.875
+    },
+    "Motorcyclist": {
+     "labels": 27,
+     "preds": 25,
+     "extra_rate": 0.32,
+     "missed_rate": 0.37
+    },
+    "Bicycle": {
+     "labels": 12,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Cyclist": {
+     "labels": 11,
+     "preds": 5,
+     "extra_rate": 0.6,
+     "missed_rate": 0.818
+    },
+    "Pedestrian": {
+     "labels": 361,
+     "preds": 108,
+     "extra_rate": 0.065,
+     "missed_rate": 0.72
+    },
+    "Sign": {
+     "labels": 0,
+     "preds": 6,
+     "extra_rate": 1.0,
+     "missed_rate": null
+    },
+    "Traffic light": {
+     "labels": 7,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    }
+   }
+  },
+  "vn_traffic_sign_hf": {
+   "images": 150,
+   "per_class": {
+    "Car": {
+     "labels": 290,
+     "preds": 197,
+     "extra_rate": 0.096,
+     "missed_rate": 0.386
+    },
+    "Bus": {
+     "labels": 14,
+     "preds": 14,
+     "extra_rate": 0.143,
+     "missed_rate": 0.143
+    },
+    "Truck": {
+     "labels": 60,
+     "preds": 32,
+     "extra_rate": 0.031,
+     "missed_rate": 0.483
+    },
+    "Other vehicle": {
+     "labels": 0,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": null
+    },
+    "Motorcycle": {
+     "labels": 132,
+     "preds": 3,
+     "extra_rate": 0.0,
+     "missed_rate": 0.977
+    },
+    "Motorcyclist": {
+     "labels": 450,
+     "preds": 444,
+     "extra_rate": 0.142,
+     "missed_rate": 0.153
+    },
+    "Bicycle": {
+     "labels": 2,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Cyclist": {
+     "labels": 1,
+     "preds": 0,
+     "extra_rate": null,
+     "missed_rate": 1.0
+    },
+    "Pedestrian": {
+     "labels": 438,
+     "preds": 129,
+     "extra_rate": 0.101,
+     "missed_rate": 0.735
+    },
+    "Sign": {
+     "labels": 345,
+     "preds": 220,
+     "extra_rate": 0.041,
+     "missed_rate": 0.388
+    },
+    "Traffic light": {
+     "labels": 26,
+     "preds": 12,
+     "extra_rate": 0.0,
+     "missed_rate": 0.538
+    }
+   }
+  }
+ },
+ "examples": {
+  "cityscapes|Car": [
+   {
+    "file": "images/train/cityscapes__train__bremen__bremen_000205_000019.jpg",
+    "box": [
+     681,
+     256,
+     728,
+     297
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__bremen__bremen_000164_000019.jpg",
+    "box": [
+     638,
+     242,
+     713,
+     309
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/cityscapes__val__frankfurt__frankfurt_000000_021879.jpg",
+    "box": [
+     361,
+     256,
+     424,
+     295
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__dusseldorf__dusseldorf_000049_000019.jpg",
+    "box": [
+     4,
+     240,
+     182,
+     325
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__dusseldorf__dusseldorf_000049_000019.jpg",
+    "box": [
+     185,
+     245,
+     263,
+     281
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__val__munster__munster_000000_000019.jpg",
+    "box": [
+     303,
+     249,
+     435,
+     338
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "cityscapes|Bicycle": [
+   {
+    "file": "images/train/cityscapes__train__bremen__bremen_000205_000019.jpg",
+    "box": [
+     1051,
+     292,
+     1209,
+     405
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__jena__jena_000060_000019.jpg",
+    "box": [
+     1150,
+     282,
+     1240,
+     340
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "cityscapes|Sign": [
+   {
+    "file": "images/train/cityscapes__train__darmstadt__darmstadt_000072_000019.jpg",
+    "box": [
+     186,
+     12,
+     241,
+     64
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__val__munster__munster_000136_000019.jpg",
+    "box": [
+     1094,
+     126,
+     1151,
+     146
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__strasbourg__strasbourg_000000_027771.jpg",
+    "box": [
+     548,
+     210,
+     568,
+     243
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__val__frankfurt__frankfurt_000001_032018.jpg",
+    "box": [
+     57,
+     56,
+     123,
+     88
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__val__frankfurt__frankfurt_000001_032018.jpg",
+    "box": [
+     61,
+     93,
+     119,
+     152
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__dusseldorf__dusseldorf_000157_000019.jpg",
+    "box": [
+     935,
+     0,
+     989,
+     68
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "cityscapes|Motorcycle": [
+   {
+    "file": "images/train/cityscapes__train__cologne__cologne_000019_000019.jpg",
+    "box": [
+     733,
+     243,
+     838,
+     350
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   }
+  ],
+  "cityscapes|Cyclist": [
+   {
+    "file": "images/train/cityscapes__val__lindau__lindau_000024_000019.jpg",
+    "box": [
+     0,
+     292,
+     98,
+     540
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__dusseldorf__dusseldorf_000155_000019.jpg",
+    "box": [
+     944,
+     211,
+     999,
+     352
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Cyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/cityscapes__train__cologne__cologne_000008_000019.jpg",
+    "box": [
+     671,
+     208,
+     722,
+     372
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Cyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/cityscapes__val__frankfurt__frankfurt_000000_012868.jpg",
+    "box": [
+     767,
+     211,
+     803,
+     328
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__monchengladbach__monchengladbach_000000_010505.jpg",
+    "box": [
+     441,
+     201,
+     493,
+     352
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Cyclist->as_Pedestrian"
+   }
+  ],
+  "cityscapes|Pedestrian": [
+   {
+    "file": "images/train/cityscapes__val__munster__munster_000043_000019.jpg",
+    "box": [
+     966,
+     253,
+     995,
+     335
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   },
+   {
+    "file": "images/train/cityscapes__train__weimar__weimar_000074_000019.jpg",
+    "box": [
+     551,
+     251,
+     577,
+     317
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   },
+   {
+    "file": "images/train/cityscapes__train__weimar__weimar_000074_000019.jpg",
+    "box": [
+     747,
+     259,
+     776,
+     344
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   },
+   {
+    "file": "images/train/cityscapes__train__erfurt__erfurt_000067_000019.jpg",
+    "box": [
+     859,
+     265,
+     890,
+     363
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   },
+   {
+    "file": "images/train/cityscapes__train__erfurt__erfurt_000067_000019.jpg",
+    "box": [
+     824,
+     251,
+     866,
+     350
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   },
+   {
+    "file": "images/train/cityscapes__val__munster__munster_000153_000019.jpg",
+    "box": [
+     317,
+     249,
+     340,
+     313
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   }
+  ],
+  "cityscapes|Bus": [
+   {
+    "file": "images/train/cityscapes__train__bremen__bremen_000138_000019.jpg",
+    "box": [
+     5,
+     188,
+     232,
+     313
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Other vehicle"
+   },
+   {
+    "file": "images/train/cityscapes__train__hanover__hanover_000000_024441.jpg",
+    "box": [
+     745,
+     88,
+     1210,
+     449
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Car"
+   }
+  ],
+  "cityscapes|Traffic light": [
+   {
+    "file": "images/train/cityscapes__train__bremen__bremen_000138_000019.jpg",
+    "box": [
+     1067,
+     97,
+     1090,
+     161
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__dusseldorf__dusseldorf_000094_000019.jpg",
+    "box": [
+     31,
+     152,
+     67,
+     206
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__darmstadt__darmstadt_000028_000019.jpg",
+    "box": [
+     1142,
+     1,
+     1182,
+     75
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__aachen__aachen_000119_000019.jpg",
+    "box": [
+     1216,
+     146,
+     1239,
+     198
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__bremen__bremen_000089_000019.jpg",
+    "box": [
+     441,
+     112,
+     472,
+     185
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/cityscapes__train__darmstadt__darmstadt_000027_000019.jpg",
+    "box": [
+     1142,
+     1,
+     1182,
+     75
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "cityscapes|Truck": [
+   {
+    "file": "images/train/cityscapes__val__munster__munster_000153_000019.jpg",
+    "box": [
+     1151,
+     120,
+     1280,
+     552
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Other vehicle"
+   },
+   {
+    "file": "images/train/cityscapes__train__strasbourg__strasbourg_000001_031683.jpg",
+    "box": [
+     788,
+     128,
+     1013,
+     332
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Other vehicle"
+   }
+  ],
+  "idd_segmentation|Truck": [
+   {
+    "file": "images/train/idd_segmentation__train__133__311114.jpg",
+    "box": [
+     445,
+     283,
+     519,
+     365
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Other vehicle"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__63__441412.jpg",
+    "box": [
+     836,
+     343,
+     959,
+     463
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__121__103873.jpg",
+    "box": [
+     558,
+     264,
+     623,
+     339
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__118__020554.jpg",
+    "box": [
+     810,
+     278,
+     1280,
+     719
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__63__401117.jpg",
+    "box": [
+     258,
+     316,
+     482,
+     500
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__63__401117.jpg",
+    "box": [
+     545,
+     330,
+     608,
+     476
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   }
+  ],
+  "idd_segmentation|Pedestrian": [
+   {
+    "file": "images/train/idd_segmentation__train__63__441412.jpg",
+    "box": [
+     518,
+     382,
+     552,
+     506
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/idd_segmentation__train__28__010441.jpg",
+    "box": [
+     1101,
+     342,
+     1118,
+     384
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Motorcyclist"
+   }
+  ],
+  "idd_segmentation|Car": [
+   {
+    "file": "images/train/idd_segmentation__train__127__196462.jpg",
+    "box": [
+     630,
+     302,
+     670,
+     336
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Bus"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__127__196462.jpg",
+    "box": [
+     600,
+     309,
+     622,
+     330
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/idd_segmentation__train__42__830793.jpg",
+    "box": [
+     246,
+     320,
+     301,
+     367
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/idd_segmentation__train__152__177938.jpg",
+    "box": [
+     659,
+     313,
+     714,
+     368
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__42__220050.jpg",
+    "box": [
+     1051,
+     283,
+     1122,
+     323
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/idd_segmentation__train__157__668203.jpg",
+    "box": [
+     623,
+     383,
+     658,
+     420
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   }
+  ],
+  "idd_segmentation|Bus": [
+   {
+    "file": "images/train/idd_segmentation__val__67__015259.jpg",
+    "box": [
+     440,
+     284,
+     560,
+     441
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__6__196692.jpg",
+    "box": [
+     709,
+     314,
+     767,
+     389
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__6__678713.jpg",
+    "box": [
+     616,
+     272,
+     745,
+     439
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Car"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__124__491964.jpg",
+    "box": [
+     811,
+     341,
+     972,
+     454
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Car"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__136__726875.jpg",
+    "box": [
+     239,
+     60,
+     311,
+     203
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Other vehicle"
+   }
+  ],
+  "idd_segmentation|Motorcycle": [
+   {
+    "file": "images/train/idd_segmentation__train__42__220050.jpg",
+    "box": [
+     327,
+     312,
+     575,
+     626
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__29__848297.jpg",
+    "box": [
+     915,
+     286,
+     970,
+     344
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__59__843726.jpg",
+    "box": [
+     963,
+     341,
+     1067,
+     456
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   }
+  ],
+  "idd_segmentation|Motorcyclist": [
+   {
+    "file": "images/train/idd_segmentation__train__68__022276.jpg",
+    "box": [
+     700,
+     347,
+     723,
+     411
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/idd_segmentation__train__176__020537.jpg",
+    "box": [
+     0,
+     471,
+     52,
+     685
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Motorcycle"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__176__020537.jpg",
+    "box": [
+     932,
+     387,
+     962,
+     441
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/idd_segmentation__train__28__010441.jpg",
+    "box": [
+     1117,
+     433,
+     1280,
+     720
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Motorcycle"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__130__025163.jpg",
+    "box": [
+     758,
+     347,
+     786,
+     399
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Motorcycle"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__68__018976.jpg",
+    "box": [
+     706,
+     341,
+     734,
+     400
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Other vehicle"
+   }
+  ],
+  "idd_segmentation|Other vehicle": [
+   {
+    "file": "images/train/idd_segmentation__train__176__020537.jpg",
+    "box": [
+     806,
+     391,
+     871,
+     460
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/idd_segmentation__train__1__148425.jpg",
+    "box": [
+     546,
+     275,
+     587,
+     318
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Other vehicle->as_Truck"
+   },
+   {
+    "file": "images/train/idd_segmentation__train__71__114795.jpg",
+    "box": [
+     536,
+     288,
+     573,
+     333
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Other vehicle->as_Truck"
+   },
+   {
+    "file": "images/train/idd_segmentation__val__167__003932.jpg",
+    "box": [
+     901,
+     333,
+     1163,
+     529
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Other vehicle->as_Truck"
+   }
+  ],
+  "idd_segmentation|Traffic light": [
+   {
+    "file": "images/train/idd_segmentation__val__167__002638.jpg",
+    "box": [
+     1232,
+     202,
+     1279,
+     322
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Traffic light->as_Bus"
+   }
+  ],
+  "idd_segmentation|Sign": [
+   {
+    "file": "images/train/idd_segmentation__train__110__007058.jpg",
+    "box": [
+     195,
+     188,
+     224,
+     235
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "mapillary_vistas_v2|Car": [
+   {
+    "file": "images/train/mapillary_vistas_v2__gtG9StwH9-DuBNY4nWaj1A.jpg",
+    "box": [
+     809,
+     352,
+     933,
+     387
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__KfMoXdKHyQhZxt_kPXwoIA.jpg",
+    "box": [
+     779,
+     602,
+     915,
+     716
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__K7K6YSS_50VgfoD88N6AaA.jpg",
+    "box": [
+     360,
+     467,
+     450,
+     531
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Motorcycle"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__K7K6YSS_50VgfoD88N6AaA.jpg",
+    "box": [
+     848,
+     432,
+     884,
+     454
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__K7K6YSS_50VgfoD88N6AaA.jpg",
+    "box": [
+     424,
+     458,
+     524,
+     515
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Motorcycle"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__FzxQ9U2pwMSk4HCOJgtxgA.jpg",
+    "box": [
+     1,
+     843,
+     148,
+     960
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "mapillary_vistas_v2|Sign": [
+   {
+    "file": "images/train/mapillary_vistas_v2__gtG9StwH9-DuBNY4nWaj1A.jpg",
+    "box": [
+     1145,
+     140,
+     1195,
+     191
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__3pVtda5x2wQxhX-LVFdXAQ.jpg",
+    "box": [
+     810,
+     614,
+     861,
+     756
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__3pVtda5x2wQxhX-LVFdXAQ.jpg",
+    "box": [
+     659,
+     404,
+     699,
+     440
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__2iY20K2OFF9spU6893DzAg.jpg",
+    "box": [
+     499,
+     301,
+     535,
+     343
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__KBBQ1xY8JgIeUN8SUpu8Yg.jpg",
+    "box": [
+     0,
+     530,
+     42,
+     654
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__il5Zgy5-qYCBBAYLGk4ofA.jpg",
+    "box": [
+     843,
+     466,
+     873,
+     508
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "mapillary_vistas_v2|Truck": [
+   {
+    "file": "images/train/mapillary_vistas_v2__HS6OJq4d4NjDzD8pjccRgg.jpg",
+    "box": [
+     959,
+     547,
+     1075,
+     701
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__keJ84pDZvEru75k6EvZyfQ.jpg",
+    "box": [
+     485,
+     510,
+     582,
+     651
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__HfTPafzX4appQqtacnH6RA.jpg",
+    "box": [
+     818,
+     572,
+     1084,
+     778
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   }
+  ],
+  "mapillary_vistas_v2|Pedestrian": [
+   {
+    "file": "images/train/mapillary_vistas_v2__fMksMggOzVucsN8Fg4TITQ.jpg",
+    "box": [
+     645,
+     613,
+     669,
+     686
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__9TnRAuITstsV0UcPaSFKMw.jpg",
+    "box": [
+     1246,
+     709,
+     1280,
+     806
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__hI5_DHELWHDWudIlmrSB4w.jpg",
+    "box": [
+     928,
+     480,
+     960,
+     561
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__IgPKyUGOLtDbWrhrNe2xPQ.jpg",
+    "box": [
+     117,
+     403,
+     157,
+     457
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__IgPKyUGOLtDbWrhrNe2xPQ.jpg",
+    "box": [
+     178,
+     398,
+     225,
+     457
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__IZQ6qjivdvLz7OcwQvBVyg.jpg",
+    "box": [
+     570,
+     460,
+     592,
+     544
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   }
+  ],
+  "mapillary_vistas_v2|Bus": [
+   {
+    "file": "images/train/mapillary_vistas_v2__9TnRAuITstsV0UcPaSFKMw.jpg",
+    "box": [
+     77,
+     511,
+     381,
+     738
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__HRcrjFo2dA83jc4oDfD1Lg.jpg",
+    "box": [
+     546,
+     335,
+     619,
+     375
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__4J_5ndss13PDMZ2SAytVcA.jpg",
+    "box": [
+     0,
+     459,
+     370,
+     647
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__3rPZ5klezNiUzS17X1BNAA.jpg",
+    "box": [
+     0,
+     412,
+     324,
+     768
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__20kAtGQEOgK8GbTTblPgYA.jpg",
+    "box": [
+     744,
+     580,
+     945,
+     751
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__fQKVipQ2EP87dlG-rUG1dQ.jpg",
+    "box": [
+     297,
+     648,
+     409,
+     694
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   }
+  ],
+  "mapillary_vistas_v2|Traffic light": [
+   {
+    "file": "images/train/mapillary_vistas_v2__KQPOE5LJwOisP1AMOnFeIw.jpg",
+    "box": [
+     1108,
+     132,
+     1152,
+     212
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__HuSNG2TYet6zib7_ZxDIrQ.jpg",
+    "box": [
+     815,
+     370,
+     832,
+     415
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__FZWJYn8XGjtStEa8giXRzg.jpg",
+    "box": [
+     513,
+     493,
+     555,
+     543
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Traffic light->as_Sign"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__FZWJYn8XGjtStEa8giXRzg.jpg",
+    "box": [
+     798,
+     551,
+     832,
+     591
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Traffic light->as_Sign"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2__JMToUcm892He7AQS4Cfcrw.jpg",
+    "box": [
+     333,
+     542,
+     351,
+     575
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "mapillary_vistas_v2|Cyclist": [
+   {
+    "file": "images/train/mapillary_vistas_v2__CMf3ew_I2gbcKh-gp6-H2g.jpg",
+    "box": [
+     647,
+     680,
+     677,
+     759
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Cyclist->as_Motorcyclist"
+   }
+  ],
+  "mapillary_vistas_v2_poly|Car": [
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__BaszJ6dWF_fy0d1mCvKo2w.jpg",
+    "box": [
+     820,
+     652,
+     882,
+     715
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Other vehicle"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__a8QM9l3AJkQvTGbg57XZmw.jpg",
+    "box": [
+     667,
+     510,
+     704,
+     543
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Other vehicle"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__arD-m3H0s6RoJO4sf9bKQA.jpg",
+    "box": [
+     513,
+     662,
+     579,
+     729
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__a6DuxKNU4uVzgV9k9NsZOg.jpg",
+    "box": [
+     970,
+     692,
+     1235,
+     890
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__CrU1P-kk2AD4jHH9z1RAWg.jpg",
+    "box": [
+     782,
+     523,
+     898,
+     626
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__0jmO7cxBjNwXmi6362zojQ.jpg",
+    "box": [
+     664,
+     678,
+     734,
+     714
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "mapillary_vistas_v2_poly|Bus": [
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__cS3654J0YogDIJQFfO0r3g.jpg",
+    "box": [
+     0,
+     288,
+     240,
+     739
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__CVLdfrfRFTbzxNhXYh2LBA.jpg",
+    "box": [
+     583,
+     568,
+     661,
+     658
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__6tu_YtXVrrvWJZVJUtWenw.jpg",
+    "box": [
+     235,
+     630,
+     374,
+     722
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__CSyxD1eSVqdU2evtTlX5Kg.jpg",
+    "box": [
+     3,
+     463,
+     343,
+     587
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "mapillary_vistas_v2_poly|Truck": [
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__6ufGKCZbMhxrSa1ql5PXpQ.jpg",
+    "box": [
+     630,
+     418,
+     1236,
+     816
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__bb6d0-8fMxL1w3jiSDskoA.jpg",
+    "box": [
+     979,
+     393,
+     1153,
+     575
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__79YI0cAP3hU_YjnxabEoZQ.jpg",
+    "box": [
+     725,
+     378,
+     897,
+     568
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__79YI0cAP3hU_YjnxabEoZQ.jpg",
+    "box": [
+     621,
+     414,
+     724,
+     545
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__bA0eaKnJ7j-Jh0ldsgcsdw.jpg",
+    "box": [
+     804,
+     615,
+     949,
+     776
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__CumN9XcAFmJmaCoOB2I4rA.jpg",
+    "box": [
+     968,
+     267,
+     1280,
+     719
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   }
+  ],
+  "mapillary_vistas_v2_poly|Traffic light": [
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__arD-m3H0s6RoJO4sf9bKQA.jpg",
+    "box": [
+     375,
+     249,
+     451,
+     534
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__D-rB3dqtnl8kUNjlV5yvIA.jpg",
+    "box": [
+     633,
+     470,
+     647,
+     510
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__cSFkhPeLyxDiviCnJyW-mw.jpg",
+    "box": [
+     606,
+     362,
+     625,
+     413
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__73EqbgwsL4tyhCBIA0xYSA.jpg",
+    "box": [
+     437,
+     163,
+     512,
+     211
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Traffic light->as_Sign"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__H2iVkukZXoZYFHQN90-r5Q.jpg",
+    "box": [
+     29,
+     150,
+     63,
+     208
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "mapillary_vistas_v2_poly|Sign": [
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__cSIWRe-lEeTiYV58ybQtmg.jpg",
+    "box": [
+     925,
+     416,
+     960,
+     456
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__AJtmx3jdDezLWPxo3kHtuA.jpg",
+    "box": [
+     790,
+     561,
+     835,
+     604
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__0jsFJM2d60cUsYrhTcUQEw.jpg",
+    "box": [
+     42,
+     0,
+     199,
+     138
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__7dzpAz74BOm7fjRNiecMkw.jpg",
+    "box": [
+     1033,
+     261,
+     1119,
+     344
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__cSFkhPeLyxDiviCnJyW-mw.jpg",
+    "box": [
+     1115,
+     406,
+     1158,
+     445
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__aqQ8bW-VUBniEiinOMqVng.jpg",
+    "box": [
+     902,
+     363,
+     925,
+     396
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Sign->as_Traffic light"
+   }
+  ],
+  "mapillary_vistas_v2_poly|Pedestrian": [
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__A51v8CzEX1frIx2e2DtGUg.jpg",
+    "box": [
+     405,
+     485,
+     430,
+     554
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__0icaMxV8_mJ8sb892WlhXA.jpg",
+    "box": [
+     241,
+     372,
+     311,
+     556
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__JUnFhTpLrcr3ez66W-00HQ.jpg",
+    "box": [
+     629,
+     405,
+     655,
+     499
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__7ps5qvPjJwwIWzLFat0OFQ.jpg",
+    "box": [
+     1136,
+     568,
+     1157,
+     634
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__6zmgRcZ-1pAbcQYPs3SpgQ.jpg",
+    "box": [
+     233,
+     510,
+     305,
+     680
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__6zmgRcZ-1pAbcQYPs3SpgQ.jpg",
+    "box": [
+     172,
+     485,
+     219,
+     599
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "mapillary_vistas_v2_poly|Motorcyclist": [
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__0icaMxV8_mJ8sb892WlhXA.jpg",
+    "box": [
+     349,
+     354,
+     430,
+     581
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Cyclist"
+   },
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__cRTMgHsmfmjIKMZRIpslMA.jpg",
+    "box": [
+     1010,
+     509,
+     1067,
+     651
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Cyclist"
+   }
+  ],
+  "mapillary_vistas_v2_poly|Motorcycle": [
+   {
+    "file": "images/train/mapillary_vistas_v2_poly__7-m-p2b2zUfr3LYCMQTF4Q.jpg",
+    "box": [
+     57,
+     744,
+     197,
+     860
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "roboflow_traffic_vn|Car": [
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0098_jpg.rf.41e0d18e024ede55f7a2da2299fd47a1.jpg",
+    "box": [
+     54,
+     175,
+     80,
+     201
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0043_jpg.rf.fc3b44a6373de11d0e19a33601e2aafb.jpg",
+    "box": [
+     30,
+     168,
+     41,
+     181
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0003_jpg.rf.e8a419c25715d0651533cdc5f4672667.jpg",
+    "box": [
+     62,
+     180,
+     88,
+     205
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0095_jpg.rf.1807dc0952a8472f6774c297c11919d3.jpg",
+    "box": [
+     28,
+     166,
+     43,
+     184
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   }
+  ],
+  "roboflow_traffic_vn|Motorcycle": [
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0043_jpg.rf.fc3b44a6373de11d0e19a33601e2aafb.jpg",
+    "box": [
+     588,
+     267,
+     639,
+     316
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   },
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0043_jpg.rf.fc3b44a6373de11d0e19a33601e2aafb.jpg",
+    "box": [
+     324,
+     369,
+     406,
+     423
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   },
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0099_jpg.rf.61a3bc01a24bf51e9b36ffcb16329f44.jpg",
+    "box": [
+     286,
+     242,
+     339,
+     296
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   },
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0001_jpg.rf.dd10757ee5a0b2908e7c5950e14bc419.jpg",
+    "box": [
+     369,
+     237,
+     409,
+     261
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   }
+  ],
+  "roboflow_traffic_vn|Pedestrian": [
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0137_jpg.rf.04e98df5d1e47c2a28a351224cb1a7a6.jpg",
+    "box": [
+     244,
+     383,
+     307,
+     423
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "roboflow_traffic_vn|Truck": [
+   {
+    "file": "images/train/roboflow_traffic_vn__train__images__frame_0019_jpg.rf.04b06a678f4f65e9754c9e80b2b29d94.jpg",
+    "box": [
+     190,
+     204,
+     530,
+     423
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   }
+  ],
+  "roboflow_vn_traffic_v2i|Sign": [
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4159-MOV_out0034_png.rf.cc31a12b30efc77_4aa67fcc8ad4.jpg",
+    "box": [
+     101,
+     9,
+     247,
+     233
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4077-MOV_out0017_png.rf.26e137e5de6609e_4922bb7d3d0a.jpg",
+    "box": [
+     532,
+     281,
+     565,
+     329
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4077-MOV_out0017_png.rf.26e137e5de6609e_4922bb7d3d0a.jpg",
+    "box": [
+     531,
+     137,
+     556,
+     163
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4201-MOV_out0001_png.rf.ae48a291820d07e_773189c0a31d.jpg",
+    "box": [
+     609,
+     528,
+     640,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4201-MOV_out0001_png.rf.ae48a291820d07e_773189c0a31d.jpg",
+    "box": [
+     615,
+     133,
+     640,
+     264
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4047-MOV_out0005_png.rf.c45fc63c5213114_5ab89e0400e2.jpg",
+    "box": [
+     332,
+     265,
+     355,
+     301
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "roboflow_vn_traffic_v2i|Other vehicle": [
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4125-MOV_out0009_png.rf.0a85f8798cdbbf5_edb5d1d541c5.jpg",
+    "box": [
+     12,
+     425,
+     172,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Other vehicle->as_Car"
+   }
+  ],
+  "roboflow_vn_traffic_v2i|Motorcyclist": [
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4125-MOV_out0009_png.rf.0a85f8798cdbbf5_edb5d1d541c5.jpg",
+    "box": [
+     0,
+     410,
+     41,
+     573
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4122-MOV_out0028_png.rf.f328c4eed3dfe71_bee4a3394a8a.jpg",
+    "box": [
+     2,
+     362,
+     45,
+     546
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4036-MOV_out0011_png.rf.0ac3150dc3b93b8_24a5fde658d1.jpg",
+    "box": [
+     28,
+     390,
+     67,
+     521
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Cyclist"
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4077-MOV_out0017_png.rf.26e137e5de6609e_4922bb7d3d0a.jpg",
+    "box": [
+     311,
+     424,
+     454,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4047-MOV_out0005_png.rf.c45fc63c5213114_5ab89e0400e2.jpg",
+    "box": [
+     0,
+     449,
+     53,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4166-MOV_out0085_png.rf.821e9a3df2cba7b_3fe390913b92.jpg",
+    "box": [
+     84,
+     570,
+     124,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Pedestrian"
+   }
+  ],
+  "roboflow_vn_traffic_v2i|Motorcycle": [
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4036-MOV_out0011_png.rf.0ac3150dc3b93b8_24a5fde658d1.jpg",
+    "box": [
+     410,
+     396,
+     521,
+     573
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   }
+  ],
+  "roboflow_vn_traffic_v2i|Car": [
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4068-MOV_out0001_png.rf.2e15833f41340f8_c26ed1cb3756.jpg",
+    "box": [
+     505,
+     550,
+     640,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4007-MOV_out0032_png.rf.6e1a3beaf32eb05_ff54eee8c51b.jpg",
+    "box": [
+     318,
+     535,
+     635,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4009-MOV_out0017_png.rf.84321338b7de78f_00392506e1b6.jpg",
+    "box": [
+     571,
+     602,
+     640,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4022-MOV_out0223_png.rf.851b9ee41026893_6b70d4980efd.jpg",
+    "box": [
+     256,
+     343,
+     274,
+     363
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__image_232_jpg.rf.9f5e6a3dc38b727af559bf6cced363fb.jpg",
+    "box": [
+     508,
+     256,
+     544,
+     285
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4006-MOV_out0024_png.rf.d96fbea28a674b3_1b10e910b002.jpg",
+    "box": [
+     358,
+     423,
+     639,
+     639
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "roboflow_vn_traffic_v2i|Pedestrian": [
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4047-MOV_out0005_png.rf.c45fc63c5213114_5ab89e0400e2.jpg",
+    "box": [
+     0,
+     411,
+     26,
+     461
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4071-MOV_out0023_png.rf.48b192a861642f0_e189d65c99df.jpg",
+    "box": [
+     281,
+     416,
+     328,
+     592
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Cyclist"
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4143-MOV_out0005_png.rf.afc040ce37bc9d0_f0276772e6cf.jpg",
+    "box": [
+     410,
+     600,
+     444,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4143-MOV_out0005_png.rf.afc040ce37bc9d0_f0276772e6cf.jpg",
+    "box": [
+     366,
+     599,
+     392,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__test__images__IMG_4082-MOV_out0002_png.rf.c3e4e7949a6673e7_526848807ca1.jpg",
+    "box": [
+     35,
+     402,
+     53,
+     435
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4192-MOV_out0022_png.rf.436adaaa812168f_e15d76781c1c.jpg",
+    "box": [
+     347,
+     570,
+     386,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "roboflow_vn_traffic_v2i|Truck": [
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4191-MOV_out0002_png.rf.e7779fea65eb6b1_cc11ce97b791.jpg",
+    "box": [
+     126,
+     333,
+     329,
+     550
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4143-MOV_out0005_png.rf.afc040ce37bc9d0_f0276772e6cf.jpg",
+    "box": [
+     0,
+     574,
+     70,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4017-MOV_out0018_png.rf.697eacd0568fa57_878467ec178d.jpg",
+    "box": [
+     426,
+     382,
+     640,
+     638
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4040-MOV_out0006_png.rf.e6c6199baef5139_427a84383a9d.jpg",
+    "box": [
+     0,
+     301,
+     41,
+     401
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4037-MOV_out0005_png.rf.c3c4c1d5109e99f_7cd63bd34eff.jpg",
+    "box": [
+     159,
+     357,
+     197,
+     425
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__test__images__IMG_4194-MOV_out0012_png.rf.641807d3f34f2c13_95ab8312f4ef.jpg",
+    "box": [
+     333,
+     586,
+     405,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "roboflow_vn_traffic_v2i|Bus": [
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__test__images__IMG_4082-MOV_out0002_png.rf.c3e4e7949a6673e7_526848807ca1.jpg",
+    "box": [
+     0,
+     324,
+     44,
+     414
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Car"
+   }
+  ],
+  "roboflow_vn_traffic_v2i|Cyclist": [
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__valid__images__IMG_4184-MOV_out0053_png.rf.b23f41e6c2f4e0b_4742a2ee2b25.jpg",
+    "box": [
+     122,
+     426,
+     152,
+     543
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Cyclist->as_Motorcyclist"
+   },
+   {
+    "file": "images/train/roboflow_vn_traffic_v2i__train__images__IMG_4184-MOV_out0037_png.rf.bc450c1aa42ac09_13d9129a410d.jpg",
+    "box": [
+     54,
+     319,
+     67,
+     366
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Cyclist->as_Pedestrian"
+   }
+  ],
+  "tuk_tuk_rickshaw_hf|Pedestrian": [
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__498_jpg.rf.98b0a72d99695738f0d5376c109ea5a7.jpg",
+    "box": [
+     145,
+     127,
+     153,
+     147
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__498_jpg.rf.98b0a72d99695738f0d5376c109ea5a7.jpg",
+    "box": [
+     131,
+     113,
+     136,
+     128
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__00-463-_jpg.rf.c4d17b9f8f3b00f6579646f542dfe6ae.jpg",
+    "box": [
+     139,
+     291,
+     156,
+     364
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__00-463-_jpg.rf.c4d17b9f8f3b00f6579646f542dfe6ae.jpg",
+    "box": [
+     567,
+     435,
+     589,
+     497
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__745_jpg.rf.ea15f0ed52cc7f450d369db0e0a566a8.jpg",
+    "box": [
+     17,
+     147,
+     31,
+     160
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__334_jpg.rf.e5da083cf701ac59b9c5a8fe927ccf3a.jpg",
+    "box": [
+     231,
+     12,
+     282,
+     132
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "tuk_tuk_rickshaw_hf|Car": [
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__186_jpg.rf.c3b8cc85d3ceaf3b68300e341772fff3.jpg",
+    "box": [
+     1055,
+     353,
+     1092,
+     393
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__00-463-_jpg.rf.c4d17b9f8f3b00f6579646f542dfe6ae.jpg",
+    "box": [
+     0,
+     350,
+     15,
+     450
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Bus"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__387_jpg.rf.d8e66e08cdf8f41ea77cbfa9892ce11c.jpg",
+    "box": [
+     212,
+     106,
+     238,
+     129
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__youtube-96_jpg.rf.88ffa316d8193c090_8d2ca6f2fa8b.jpg",
+    "box": [
+     0,
+     313,
+     85,
+     475
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__131_jpg.rf.0990b6b9e84958ba9aa08545fc0cbd0f.jpg",
+    "box": [
+     0,
+     157,
+     33,
+     382
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "tuk_tuk_rickshaw_hf|Other vehicle": [
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__youtube-7_jpg.rf.e374cfdbcd7fc09fea_baf6a90d1d5d.jpg",
+    "box": [
+     450,
+     132,
+     554,
+     317
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__306_jpg.rf.794b01a8567c01b9efedf622b9abc5b0.jpg",
+    "box": [
+     75,
+     33,
+     318,
+     225
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Other vehicle->as_Truck"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__431_jpg.rf.4b266de970137123695968804b0de8e3.jpg",
+    "box": [
+     78,
+     44,
+     169,
+     152
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__00-463-_jpg.rf.c4d17b9f8f3b00f6579646f542dfe6ae.jpg",
+    "box": [
+     410,
+     343,
+     494,
+     485
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Other vehicle->as_Bus"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_test__139_jpg.rf.8d98be96761a2dfaa5eff4aaf47a2c4a.jpg",
+    "box": [
+     27,
+     261,
+     91,
+     324
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Other vehicle->as_Car"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__Video6_13_jpg.rf.c99b577d2ec880c123_f4372ffbc763.jpg",
+    "box": [
+     0,
+     457,
+     95,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Other vehicle->as_Truck"
+   }
+  ],
+  "tuk_tuk_rickshaw_hf|Truck": [
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__Video6_13_jpg.rf.c99b577d2ec880c123_f4372ffbc763.jpg",
+    "box": [
+     185,
+     349,
+     254,
+     520
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Car"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_valid__217_jpg.rf.d6c56a4dfd0b3e53d82882da38b43369.jpg",
+    "box": [
+     1,
+     0,
+     238,
+     358
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_valid__20210525_07_45_49_000_T4CaxysrQ7W21_5aa94d59c3a4.jpg",
+    "box": [
+     252,
+     263,
+     358,
+     336
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_valid__bus-85_jpg.rf.3f6ad7f836da0f8e696307813524c0b0.jpg",
+    "box": [
+     8,
+     158,
+     525,
+     601
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Bus"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__253_jpg.rf.353c15e44aff83554a4f4b46946c32c6.jpg",
+    "box": [
+     166,
+     112,
+     436,
+     394
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Truck->as_Other vehicle"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_valid__19_jpg.rf.66a3199c5df156859ac263e94829beb6.jpg",
+    "box": [
+     19,
+     214,
+     66,
+     303
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "tuk_tuk_rickshaw_hf|Sign": [
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__Video6_13_jpg.rf.c99b577d2ec880c123_f4372ffbc763.jpg",
+    "box": [
+     530,
+     11,
+     545,
+     37
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__photo-1612662091718-5a5b79f6bdc8_jp_d8dc53472a35.jpg",
+    "box": [
+     144,
+     0,
+     192,
+     34
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__347_jpg.rf.63708f11d3b4602b87a49ce8ca66ee62.jpg",
+    "box": [
+     508,
+     0,
+     546,
+     52
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_valid__0106_png.rf.86e5cea7bc108d0d517085d7a965944e.jpg",
+    "box": [
+     134,
+     70,
+     160,
+     119
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_valid__0110_png.rf.432d9d9d6f37c7ab2d840202a5ad8491.jpg",
+    "box": [
+     157,
+     51,
+     183,
+     99
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_valid__0110_png.rf.432d9d9d6f37c7ab2d840202a5ad8491.jpg",
+    "box": [
+     59,
+     72,
+     89,
+     126
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "tuk_tuk_rickshaw_hf|Motorcyclist": [
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__250_jpg.rf.af329989984d81d749c4bf71d3fc1029.jpg",
+    "box": [
+     112,
+     135,
+     170,
+     250
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__334_jpg.rf.e5da083cf701ac59b9c5a8fe927ccf3a.jpg",
+    "box": [
+     858,
+     226,
+     1003,
+     396
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__Screenshot-26-_png_jpg.rf.0769c6b3c_e68785da0991.jpg",
+    "box": [
+     381,
+     424,
+     418,
+     535
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__Screenshot-9-_png_jpg.rf.514c03fb13_a0194e561afc.jpg",
+    "box": [
+     91,
+     286,
+     139,
+     446
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__Screenshot-9-_png_jpg.rf.514c03fb13_a0194e561afc.jpg",
+    "box": [
+     293,
+     344,
+     328,
+     480
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__Screenshot-9-_png_jpg.rf.514c03fb13_a0194e561afc.jpg",
+    "box": [
+     308,
+     480,
+     362,
+     640
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "tuk_tuk_rickshaw_hf|Bus": [
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__250_jpg.rf.af329989984d81d749c4bf71d3fc1029.jpg",
+    "box": [
+     734,
+     149,
+     800,
+     246
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__81_jpg.rf.d38d0ea27d068214d05d172efec67dbc.jpg",
+    "box": [
+     418,
+     150,
+     505,
+     232
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_train__79_jpg.rf.fb122ac5dccc74f0841b0d238f5fb128.jpg",
+    "box": [
+     241,
+     81,
+     306,
+     149
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   }
+  ],
+  "tuk_tuk_rickshaw_hf|Cyclist": [
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_valid__youtube-40_jpg.rf.5c04b8e53ed4bf170_b8d4ff0ada97.jpg",
+    "box": [
+     77,
+     235,
+     93,
+     291
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Cyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_valid__0106_png.rf.86e5cea7bc108d0d517085d7a965944e.jpg",
+    "box": [
+     562,
+     171,
+     584,
+     283
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_valid__981_jpg.rf.63ac601a1ac4c36ab36c1138b219a697.jpg",
+    "box": [
+     531,
+     310,
+     565,
+     428
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Cyclist->as_Motorcyclist"
+   }
+  ],
+  "tuk_tuk_rickshaw_hf|Motorcycle": [
+   {
+    "file": "images/train/tuk_tuk_rickshaw_hf__tuk_tuk_hf_rickshaw_valid__20210525_07_45_49_000_T4CaxysrQ7W21_5aa94d59c3a4.jpg",
+    "box": [
+     543,
+     276,
+     639,
+     378
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcycle->as_Motorcyclist"
+   }
+  ],
+  "vn_traffic_sign_hf|Car": [
+   {
+    "file": "images/train/vn_traffic_sign_hf__2977.jpg",
+    "box": [
+     179,
+     609,
+     255,
+     668
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__1483.jpg",
+    "box": [
+     0,
+     236,
+     79,
+     352
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__1554.jpg",
+    "box": [
+     182,
+     388,
+     274,
+     506
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__2974.jpg",
+    "box": [
+     126,
+     578,
+     221,
+     638
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__0952.jpg",
+    "box": [
+     83,
+     296,
+     127,
+     333
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Car->as_Truck"
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__0093.jpg",
+    "box": [
+     233,
+     402,
+     333,
+     537
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "vn_traffic_sign_hf|Motorcyclist": [
+   {
+    "file": "images/train/vn_traffic_sign_hf__2977.jpg",
+    "box": [
+     587,
+     610,
+     689,
+     720
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__2566.jpg",
+    "box": [
+     309,
+     377,
+     338,
+     428
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Motorcycle"
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__2638.jpg",
+    "box": [
+     1204,
+     350,
+     1280,
+     617
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__0294.jpg",
+    "box": [
+     125,
+     334,
+     151,
+     394
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__3025.jpg",
+    "box": [
+     521,
+     471,
+     636,
+     720
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Pedestrian"
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__3025.jpg",
+    "box": [
+     718,
+     507,
+     805,
+     710
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Motorcyclist->as_Pedestrian"
+   }
+  ],
+  "vn_traffic_sign_hf|Sign": [
+   {
+    "file": "images/train/vn_traffic_sign_hf__1873.jpg",
+    "box": [
+     306,
+     160,
+     325,
+     180
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__1554.jpg",
+    "box": [
+     943,
+     207,
+     960,
+     308
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__1926.jpg",
+    "box": [
+     848,
+     166,
+     879,
+     196
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__2190.jpg",
+    "box": [
+     780,
+     206,
+     795,
+     243
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__2949.jpg",
+    "box": [
+     858,
+     613,
+     882,
+     641
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__2524.jpg",
+    "box": [
+     0,
+     1,
+     49,
+     94
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "vn_traffic_sign_hf|Pedestrian": [
+   {
+    "file": "images/train/vn_traffic_sign_hf__1483.jpg",
+    "box": [
+     304,
+     237,
+     352,
+     313
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__0119.jpg",
+    "box": [
+     385,
+     253,
+     677,
+     535
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__0092.jpg",
+    "box": [
+     702,
+     431,
+     736,
+     497
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__2968.jpg",
+    "box": [
+     682,
+     611,
+     757,
+     719
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Motorcyclist"
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__2968.jpg",
+    "box": [
+     525,
+     602,
+     621,
+     719
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Motorcyclist"
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__1937.jpg",
+    "box": [
+     883,
+     233,
+     927,
+     358
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Pedestrian->as_Motorcyclist"
+   }
+  ],
+  "vn_traffic_sign_hf|Bus": [
+   {
+    "file": "images/train/vn_traffic_sign_hf__0983.jpg",
+    "box": [
+     462,
+     202,
+     543,
+     253
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": "Bus->as_Truck"
+   },
+   {
+    "file": "images/train/vn_traffic_sign_hf__2734.jpg",
+    "box": [
+     189,
+     503,
+     285,
+     541
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ],
+  "vn_traffic_sign_hf|Truck": [
+   {
+    "file": "images/train/vn_traffic_sign_hf__1307.jpg",
+    "box": [
+     216,
+     272,
+     286,
+     323
+    ],
+    "conf_ge": 0.5,
+    "overlaps_label": null
+   }
+  ]
+ }
+}

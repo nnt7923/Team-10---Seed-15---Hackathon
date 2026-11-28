@@ -64,6 +64,9 @@ def dedupe(records: list[dict], priority: dict[str, int], hamming_thr: int = 4,
     """Near-duplicate removal with pHash + LSH (4 bands of 16 bits; pigeonhole => recall for thr<=3,
     near-complete for 4). Keeps the record with the highest (source priority, #instances)."""
     log = Counter()
+    # copy-paste images are near-duplicates of their background BY DESIGN -> never clustered (v3)
+    synth = [r for r in records if r.get("synthetic") and r.get("phash")]
+    records = [r for r in records if not r.get("synthetic")]
     recs = [r for r in records if r.get("phash")]
     log["dropped_unreadable"] = len(records) - len(recs)
     ints = [int(r["phash"], 16) for r in recs]
@@ -114,6 +117,8 @@ def dedupe(records: list[dict], priority: dict[str, int], hamming_thr: int = 4,
                 log["dropped_group_cap"] += len(rs) - len(rs_keep)
                 rs = rs_keep
             kept.extend(rs)
+    kept.extend(synth)
+    log["kept_synthetic"] = len(synth)
     kept.sort(key=lambda r: r["uid"])
     log["kept"] = len(kept)
     return kept, log

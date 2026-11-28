@@ -34,6 +34,9 @@ def main():
     res = analyze(sources, Path(cfg["data_root"]), classes, Path(cfg["work_dir"]) / "converted", a.sample)
     res["val_sources"] = [s["id"] for s in sources if s.get("use_for_val")]
     res["synthetic"] = "demo" in Path(cfg["sources"]).name
+    fs = base / cfg["out_dir"] / "stats" / "stats.json"
+    if fs.exists():
+        res["final_stats"] = json.loads(fs.read_text(encoding="utf-8"))
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(render(res, classes, cfg), encoding="utf-8")
     slim = {"sources": [{k: v for k, v in s.items() if k != "thumbs"} for s in res["sources"]]}

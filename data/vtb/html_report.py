@@ -101,6 +101,11 @@ details[open] summary:after{content:"−"}
 svg text{font-family:inherit}
 .demo{border:1px solid var(--bad);color:var(--bad);padding:14px 18px;margin-top:40px;font-size:var(--f-sm)}
 footer{margin-top:96px;padding-top:18px;border-top:1px solid var(--line);font-size:var(--f-sm);color:var(--muted)}
+.flow{list-style:none;counter-reset:f;margin:24px 0 0;padding:0;border-top:1px solid var(--line)}
+.flow li{counter-increment:f;display:grid;grid-template-columns:56px 160px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.flow li::before{content:counter(f,decimal-leading-zero);color:var(--muted);font-family:var(--mono)}
+.flow b{font-family:var(--mono);font-weight:500}.flow span{color:var(--fg2)}
+@media (max-width:900px){.flow li{grid-template-columns:40px 1fr}.flow span{grid-column:2}}
 @media (max-width:1080px){.nav{display:none}}
 @media (max-width:900px){.bar-in,main{padding-left:22px;padding-right:22px}
 .kpis{grid-template-columns:repeat(2,1fr)}
@@ -263,6 +268,58 @@ def alert_rows(srcs: list[dict], class_names: list[str], display: dict, target: 
     return items or [("Không có cảnh báo", "", "ok")]
 
 
+STAGE_LABELS = [("raw", "Thô (sau chuyển đổi)"), ("cleaned", "Pool sạch"), ("train_pool", "Pool train hợp lệ"),
+                ("selected", "Đã chọn (chưa lặp)"), ("train_effective", "Train hiệu dụng (sau RFS)"),
+                ("val", "Val"), ("test", "Test")]
+
+
+def flow_steps(cfg: dict, srcs: list[dict]) -> list:
+    """The pipeline as run, with the numbers taken from the config (so the page matches the build)."""
+    b, d, sp, ex = cfg.get("balance", {}), cfg.get("dedupe", {}), cfg.get("split", {}), cfg.get("export", {})
+    teach = cfg.get("teacher_sources") or []
+    tconf = ", ".join(f"{k} {v}" for k, v in (cfg.get("teacher_class_conf") or {}).items())
+    full = [s["id"] for s in srcs if not s["missing_classes"]]
+    steps = [
+        ("Tải nguồn", f"{len(srcs)} bộ công khai (bản sao Hugging Face, Roboflow, Drive của đội) → <code>raw/</code>. "
+                      "Chi tiết từng bộ ở mục Nguồn."),
+        ("convert", "Đọc mọi định dạng (polygon JSON, COCO, YOLO-seg/detect) và ánh xạ nhãn gốc sang 11 lớp theo "
+                    "<code>label_map</code> của từng nguồn. Người chưa rõ vai trò → <code>@person</code>, "
+                    "vật BTC không gán → <code>@ignore</code>."),
+        ("sam", f"Nguồn chỉ có box: SAM (<code>{_e(cfg.get('sam_model'))}</code>) vẽ mask từ box người gán."),
+        ("complete", f"Teacher 11 lớp (<code>{_e(cfg.get('teacher_model'))}</code>) bù lớp nguồn không gán "
+                     f"(ngưỡng: {_e(tconf)}; còn lại {cfg.get('teacher_conf')}) và thay có chọn lọc nhãn người / xe "
+                     f"hai bánh của nguồn VN (<code>teacher_replace</code>). Áp dụng cho {len(teach)} nguồn: "
+                     f"{_e(', '.join(teach))}."),
+        ("resolve", "Ghép người lái + xe thành một instance (lớp 5/7), tách chồng lấn theo xa → gần (mask chỉ phần "
+                    "nhìn thấy), bỏ vật có cạnh ngắn &lt; 1.25% cạnh dài và diện tích &lt; 64 px² ở 640 "
+                    "(ngưỡng bộ chấm BTC bỏ qua)."),
+        ("clean", f"Loại ảnh gần trùng (pHash, Hamming ≤ {d.get('hamming_thr')}), tối đa {d.get('max_per_group')} "
+                  f"khung / chuỗi video, gắn ngày/đêm. Chia val {sp.get('val_fraction')} / test "
+                  f"{sp.get('test_fraction')} theo group, chỉ từ nguồn nhãn người đủ 11 lớp "
+                  f"({_e(', '.join(full) or 'IDD, Mapillary, Cityscapes')})."),
+        ("balance", f"Chọn ảnh greedy theo thâm hụt (mục tiêu {_n(b.get('target_instances_per_class', 0))} "
+                    f"instance / lớp, ngân sách {_n(b.get('max_images', 0))} ảnh), giữ mọi ảnh VN và ≥ "
+                    f"{int((b.get('min_domain_share') or {}).get('vn', 0) * 100)}% ảnh VN trong luồng train, rồi "
+                    f"repeat-factor sampling (ngưỡng {b.get('rfs_threshold')}, lặp tối đa {b.get('rfs_max_repeat')})."),
+        ("export", f"Ảnh cạnh dài {ex.get('max_side')} px, JPEG {ex.get('jpeg_quality')}, nhãn YOLO-seg, metadata "
+                   f"nguồn gốc từng ảnh → <code>{_e(ex.get('zip_name', 'du_lieu.zip'))}</code> đúng cấu trúc BTC."),
+        ("train", "Notebook BTC (yolo26n-seg, 640, seed 15), danh sách train đã lặp RFS. Chọn checkpoint theo mask "
+                  "mAP50 trên val, đối chiếu bảng public."),
+    ]
+    return steps
+
+
+def flow_section(cfg: dict, srcs: list[dict], final: dict | None) -> str:
+    items = "".join(f'<li><b>{_e(k)}</b><span>{v}</span></li>' for k, v in flow_steps(cfg, srcs))
+    table = ""
+    if final:
+        rows = "".join(f"<tr><td>{lbl}</td><td>{_n(final[k]['images'])}</td><td>{_n(final[k]['instances'])}</td></tr>"
+                       for k, lbl in STAGE_LABELS if k in final)
+        table = (f'<h3 style="margin-top:40px">Số liệu bộ dữ liệu cuối</h3><table><tr><th>Giai đoạn</th><th>Ảnh</th>'
+                 f'<th>Instance</th></tr>{rows}</table>')
+    return f'<ol class="flow">{items}</ol>{table}'
+
+
 def render(result: dict, classes, cfg: dict) -> str:
     srcs = [s for s in result["sources"] if not s.get("missing_on_disk")]
     missing = [s for s in result["sources"] if s.get("missing_on_disk")]
@@ -293,7 +350,7 @@ document.documentElement.setAttribute("data-theme",t)}})();</script>
 <style>{CSS}</style></head><body>
 <header class="bar"><div class="bar-in">
 <div class="brand">TEAM 10 &amp; SEED 15</div>
-<nav class="nav"><a href="#tong-quan">Tổng quan</a><a href="#do-phu">Độ phủ</a><a href="#ma-tran">Ma trận</a>
+<nav class="nav"><a href="#tong-quan">Tổng quan</a><a href="#luong">Luồng</a><a href="#do-phu">Độ phủ</a><a href="#ma-tran">Ma trận</a>
 <a href="#canh-bao">Cảnh báo</a><a href="#nguon">Nguồn</a></nav>
 <button class="switch" id="theme" type="button" role="switch" aria-label="Chế độ tối">
 <span class="track"><span class="knob"></span></span><span class="lbl-light">Sáng</span><span class="lbl-dark">Tối</span></button>
@@ -306,6 +363,12 @@ document.documentElement.setAttribute("data-theme",t)}})();</script>
 <p class="lead">Những gì đang có trong <code>raw/</code> trước khi chạy các bước chung — ước tính theo đúng luật của pipeline.</p>
 <p class="meta" style="margin-top:14px">Sinh lúc {now} bởi <code>scripts/analyze_raw.py</code></p>
 <div class="kpis">{kp}</div>
+</section>
+
+<section id="luong">
+<h2>Luồng xử lý</h2>
+<p class="lead">Các bước <code>scripts/run_pipeline.py</code> chạy, theo đúng thứ tự, với tham số lấy từ cấu hình.</p>
+{flow_section(cfg, srcs, result.get("final_stats"))}
 </section>
 
 <section id="do-phu">

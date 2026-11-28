@@ -102,6 +102,10 @@ def main():
     ap.add_argument("--install", action="store_true", help="run the notebook's pinned pip install (Colab/Kaggle)")
     ap.add_argument("--project", default=None, help="Ultralytics runs dir (e.g. on Google Drive, survives disconnects)")
     ap.add_argument("--save-dir", default=None, help="where to copy the final version (default: <repo>/models)")
+    ap.add_argument("--init-weights", default=None,
+                    help="start from our own 11-class checkpoint (fine-tune) instead of the pretrained yolo26n-seg.pt")
+    ap.add_argument("--set", action="append", default=[], metavar="KEY=VALUE",
+                    help="override a TRAIN_ARGS entry, e.g. --set scale=0.8 --set close_mosaic=3 (repeatable)")
     a = ap.parse_args()
 
     windows_resource_shim()
@@ -179,6 +183,14 @@ def main():
         overlap_mask=True, mask_ratio=4,
         amp=True,
     )
+    for kv in a.set:
+        k, v = kv.split("=", 1)
+        try:
+            v = json.loads(v)
+        except ValueError:
+            pass
+        TRAIN_ARGS[k] = v
+        print(f"[set] {k} = {v!r}")
     if a.bench:
         TRAIN_ARGS.update(fraction=0.05, plots=False, val=False, name="bench")
     g["seed_everything"](SEED)
@@ -187,7 +199,9 @@ def main():
         model = YOLO(str(last))
         model.train(resume=True)
     else:
-        model = YOLO(g["MODEL_WEIGHTS"])
+        model = YOLO(a.init_weights or g["MODEL_WEIGHTS"])
+        if a.init_weights:
+            print(f"[init] fine-tuning from {a.init_weights}")
         model.train(**TRAIN_ARGS)
     if a.bench:
         print(f"[bench] total {time.time() - t0:.0f}s")

@@ -1,0 +1,50 @@
+# v2 — khớp cách chấm của BTC (score = 100·√mask mAP@50, bỏ GT < 64 px² ở 640). Bản v1: classes.yaml
+# 11 class đích của cuộc thi (thứ tự = class id trong YOLO). KHÔNG đổi thứ tự.
+names:
+  0: car            # Ô tô con
+  1: bus            # Xe buýt / xe khách
+  2: truck          # Xe tải
+  3: other_vehicle  # Phương tiện khác (xích lô, ba gác, xe lôi, tuk-tuk, xe công trình...)
+  4: motorcycle     # Xe máy KHÔNG có người
+  5: motorcyclist   # Xe máy CÓ người
+  6: bicycle        # Xe đạp KHÔNG có người
+  7: cyclist        # Xe đạp CÓ người
+  8: pedestrian     # Người đi bộ
+  9: sign           # Biển báo
+  10: traffic_light # Đèn giao thông
+
+display_vi:
+  car: "Ô tô con"
+  bus: "Xe buýt / xe khách"
+  truck: "Xe tải"
+  other_vehicle: "Phương tiện khác"
+  motorcycle: "Xe máy (không người)"
+  motorcyclist: "Xe máy (có người)"
+  bicycle: "Xe đạp (không người)"
+  cyclist: "Xe đạp (có người)"
+  pedestrian: "Người đi bộ"
+  sign: "Biển báo"
+  traffic_light: "Đèn giao thông"
+
+# Ghép người lái + xe thành class 5/7.
+# !!! Kiểm tra label mẫu của BTC rồi chọn mode cho đúng:
+#   union   : mask = xe ∪ người lái (một mask chung)  <- mặc định
+#   vehicle : mask = chỉ phần xe, bỏ mask người lái
+#   rider   : mask = chỉ phần người lái
+rider_merge:
+  mode: union
+  rider_overlap_thr: 0.10    # nhãn rider tường minh (Cityscapes/Mapillary/IDD/BDD)
+  person_overlap_thr: 0.25   # nhãn "person" mơ hồ (COCO) -> chặt hơn
+  dilate_frac: 0.08          # nới mask người lái (theo cạnh dài bbox) trước khi đo vùng tiếp giáp với xe
+  person_center_margin: 0.10  # @person: tâm người phải nằm trong bbox xe (nới 10%) + chồng lấn >= person_overlap_thr; người dắt xe đứng bên cạnh = Pedestrian
+  drop_unmatched_generic_rider: true
+
+# Quy ước BTC: "đối tượng quá nhỏ (cạnh ngắn dưới khoảng 1,25% cạnh dài của ảnh)" KHÔNG gán.
+# -> bỏ instance có cạnh ngắn của bbox < 1.25% cạnh dài ảnh (≈ 8 px ở 640). Giữ lại vật BTC không gán
+#    sẽ dạy model đoán thừa và bị trừ precision.
+min_short_side_frac: 0.0125
+
+# Lưới an toàn thêm: diện tích tối thiểu (px²) đo ở cạnh dài 640 (bỏ mảnh vụn sau khi tách chồng lấn).
+min_area_640:
+  default: 64        # v2: = scoring.min_gt_area_px của BTC. GT < 64 px² (ở 640) bị hệ thống chấm BỎ QUA,
+                     # train trên chúng chỉ tốn công và dạy model đoán vật mà bộ chấm không tính.

@@ -115,6 +115,18 @@ def main():
             if s["id"] not in only or not f.exists():
                 continue
             recs = list(read_jsonl(f))
+            if cfg.get("teacher_mode") == "v2":  # 11-class own-model teacher, per-source options
+                from vtb.labeling import teacher_complete_v2
+                tag = Path(cfg["teacher_model"]).name + f"@{cfg['teacher_conf']}"
+                logs.setdefault("complete", {})[s["id"]] = dict(teacher_complete_v2(
+                    recs, classes.names, cfg["teacher_model"], tag, conf=cfg["teacher_conf"],
+                    class_conf=cfg.get("teacher_class_conf"), replace_teacher=(s.get("teacher_replace") if isinstance(s.get("teacher_replace"), list)
+                                     else bool(s.get("teacher_replace"))),
+                    fill_classes=s.get("teacher_fill"), src_labeled=s.get("labeled_classes"),
+                    imgsz=cfg.get("teacher_imgsz", 640)))
+                write_jsonl(f, recs)
+                print(f"[complete-v2] {s['id']}: {logs['complete'][s['id']]}", flush=True)
+                continue
             need = sum(1 for r in recs if set(classes.names) - set(r.get("labeled_classes") or [])
                        and not r.get("completed"))
             if need and cfg.get("teacher_model"):

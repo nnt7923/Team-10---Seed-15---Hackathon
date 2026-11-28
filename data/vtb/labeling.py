@@ -97,6 +97,72 @@ def sam_masks(records: list[dict], model_path: str, device=None) -> Counter:
     return log
 
 
+def teacher_complete_v2(records: list[dict], class_names: list[str], model_path: str, tag: str,
+                        conf: float = 0.5, class_conf: dict | None = None, replace_teacher: bool | list = False,
+                        fill_classes: list[str] | None = None, src_labeled: list[str] | None = None,
+                        imgsz: int = 640, device=None) -> Counter:
+    """v2 teacher = an 11-class checkpoint of our own model (identity label map).
+
+    * replace_teacher: drop earlier pseudo-labels (origin 'teacher', e.g. from the COCO teacher whose
+      person/motorbike split produced rider->pedestrian errors) and relabel those classes from scratch;
+    * classes the source never labeled are added from the teacher;
+    * fill_classes: classes the source DOES label but incompletely (e.g. VN sign sets label only some sign
+      types) -> teacher adds only objects that overlap no existing label;
+    * any teacher box with IoU > 0.5 to ANY existing instance (any class) is skipped -> no double objects;
+    * per-class confidence thresholds (class_conf), default `conf`.
+    Records are stamped with teacher_tag so re-runs with the same teacher are no-ops."""
+    from ultralytics import YOLO
+    log = Counter()
+    todo = [r for r in records if r.get("teacher_tag") != tag]
+    if not todo:
+        return log
+    model = YOLO(model_path)
+    names = [model.names[i] for i in sorted(model.names)]
+    norm = lambda s: s.lower().replace(" ", "_")  # BTC checkpoints use display names ("Other vehicle")
+    if [norm(n) for n in names] != [norm(n) for n in class_names]:
+        raise ValueError(f"teacher classes {names} != {class_names}")
+    class_conf = class_conf or {}
+    fill = set(fill_classes or [])
+    min_conf = min([conf, *class_conf.values()])
+    for k, r in enumerate(todo):
+        if replace_teacher:  # True = every old teacher label, or a list of old tokens/classes to drop
+            drop = None if replace_teacher is True else set(replace_teacher)
+            before = len(r["instances"])
+            r["instances"] = [it for it in r["instances"] if it.get("origin") != "teacher"
+                              or (drop is not None and it["cls"] not in drop)]
+            log["teacher_old_removed"] += before - len(r["instances"])
+        labeled = set(src_labeled if src_labeled is not None else (r.get("labeled_classes") or []))
+        res = model(r["image"], conf=min_conf, retina_masks=True, imgsz=imgsz, device=device, verbose=False)[0]
+        if res.boxes is not None and len(res.boxes):
+            cls_ids = res.boxes.cls.cpu().numpy().astype(int)
+            confs = res.boxes.conf.cpu().numpy()
+            boxes = res.boxes.xyxy.cpu().numpy()
+            polys = _masks_to_polys(res, r["width"], r["height"])
+            existing = [polys_bbox(it["polys"]) if it.get("polys") else it.get("box") for it in r["instances"]]
+            for j in np.argsort(-confs):
+                name = class_names[int(cls_ids[j])]
+                if confs[j] < class_conf.get(name, conf) or j >= len(polys) or not polys[j]:
+                    continue
+                if name in labeled and name not in fill:
+                    continue
+                b = boxes[j].tolist()
+                if any(eb and _box_iou(b, eb) > 0.5 for eb in existing):
+                    log[f"teacher_skip_overlap_{name}"] += 1
+                    continue
+                r["instances"].append({"raw": f"teacher_v2:{name}", "cls": name, "polys": polys[j],
+                                       "origin": "teacher", "conf": round(float(confs[j]), 3)})
+                existing.append(b)
+                log[f"teacher_added_{name}"] += 1
+        r["labeled_classes"] = list(class_names)  # every class is now covered (human or teacher)
+        r["completed"] = True
+        r["needs_review"] = True
+        r["teacher_tag"] = tag
+        log["images_completed"] += 1
+        if k % 500 == 0:
+            print(f"[complete-v2] {k}/{len(todo)}", flush=True)
+    return log
+
+
 def teacher_complete(records: list[dict], class_names: list[str], model_path: str, conf: float = 0.5,
                      label_map: dict | None = None, device=None, imgsz: int = 1024) -> Counter:
     """Add teacher predictions for classes the record's source did not label."""

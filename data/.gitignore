@@ -6,3 +6,5 @@ runs/
 *.pt
 __pycache__/
 *.log
+work_v2/
+dataset_v2/

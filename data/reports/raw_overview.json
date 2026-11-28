@@ -16,6 +16,7 @@
     "cyclist",
     "motorcycle",
     "motorcyclist",
+    "other_vehicle",
     "pedestrian",
     "sign",
     "traffic_light",
@@ -25,9 +26,7 @@
     "other_vehicle"
    ],
    "teacher_completed": true,
-   "missing_classes": [
-    "other_vehicle"
-   ],
+   "missing_classes": [],
    "n_images": 3216,
    "n_label_files": 3216,
    "disk_bytes": 793950347,
@@ -352,46 +351,42 @@
    "analysis_mode": "full (work/converted)",
    "n_analyzed": 3216,
    "estimated_classes": {
-    "car": 5903,
-    "bus": 503,
-    "truck": 1488,
+    "car": 6016,
+    "bus": 516,
+    "truck": 1500,
     "other_vehicle": 0,
-    "motorcycle": 2700,
-    "motorcyclist": 8998,
-    "bicycle": 40,
-    "cyclist": 14,
-    "pedestrian": 8821,
-    "sign": 7587,
-    "traffic_light": 615
+    "motorcycle": 116,
+    "motorcyclist": 9162,
+    "bicycle": 2,
+    "cyclist": 5,
+    "pedestrian": 2738,
+    "sign": 8015,
+    "traffic_light": 632
    },
    "label_origin": {
     "sam_box": 8334,
-    "teacher": 40375
+    "teacher": 22466
    },
-   "raw_instances_analyzed": 48709,
+   "raw_instances_analyzed": 30800,
    "resolve_log": {
-    "merged_motorcyclist": 9091,
-    "riders_attached": 9120,
-    "person_to_pedestrian": 9334,
-    "deoverlap_clipped": 11521,
-    "deoverlap_fully_hidden": 251,
+    "deoverlap_clipped": 7373,
+    "deoverlap_fully_hidden": 265,
     "images_resolved": 3216,
-    "drop_short_side_traffic_light": 477,
-    "drop_small_pedestrian": 5,
-    "drop_ego_teacher": 144,
-    "drop_short_side_pedestrian": 476,
-    "drop_short_side_motorcycle": 489,
-    "drop_short_side_car": 211,
-    "drop_short_side_sign": 743,
-    "drop_short_side_truck": 7,
-    "drop_short_side_motorcyclist": 92,
-    "merged_cyclist": 14,
+    "drop_short_side_traffic_light": 482,
+    "drop_short_side_car": 223,
+    "drop_small_traffic_light": 1,
+    "drop_small_pedestrian": 9,
+    "drop_short_side_sign": 770,
+    "drop_small_car": 75,
+    "drop_small_sign": 250,
+    "drop_short_side_pedestrian": 3,
+    "drop_short_side_truck": 8,
+    "drop_short_side_motorcyclist": 7,
     "drop_short_side_bus": 2,
-    "drop_small_motorcycle": 16,
-    "drop_small_car": 6,
-    "drop_short_side_bicycle": 1
+    "drop_small_truck": 2,
+    "drop_small_motorcycle": 1
    },
-   "dropped_small": 2498,
+   "dropped_small": 1495,
    "res_median": [
     960,
     540
@@ -404,12 +399,12 @@
     1920,
     1080
    ],
-   "inst_per_img_median": 11.0,
-   "inst_per_img_p90": 20.0,
+   "inst_per_img_median": 9.0,
+   "inst_per_img_p90": 15.0,
    "short_side_pct": {
-    "p10": 1.4583333333333333,
-    "p50": 3.6458333333333335,
-    "below_1_25": 5.65809193372888
+    "p10": 1.5625,
+    "p50": 4.166666666666666,
+    "below_1_25": 4.691558441558442
    },
    "night_share": 0.006666666666666667
   },
@@ -429,7 +424,9 @@
     "cyclist",
     "motorcycle",
     "motorcyclist",
+    "other_vehicle",
     "pedestrian",
+    "sign",
     "traffic_light",
     "truck"
    ],
@@ -438,10 +435,7 @@
     "sign"
    ],
    "teacher_completed": true,
-   "missing_classes": [
-    "other_vehicle",
-    "sign"
-   ],
+   "missing_classes": [],
    "n_images": 180,
    "n_label_files": 180,
    "disk_bytes": 7130761,
@@ -481,39 +475,37 @@
    "analysis_mode": "full (work/converted)",
    "n_analyzed": 180,
    "estimated_classes": {
-    "car": 550,
+    "car": 523,
     "bus": 26,
-    "truck": 144,
+    "truck": 143,
     "other_vehicle": 0,
     "motorcycle": 0,
-    "motorcyclist": 1083,
+    "motorcyclist": 1055,
     "bicycle": 0,
-    "cyclist": 8,
-    "pedestrian": 64,
+    "cyclist": 0,
+    "pedestrian": 1,
     "sign": 0,
     "traffic_light": 0
    },
    "label_origin": {
     "sam_box": 2614,
-    "teacher": 1056
+    "teacher": 30
    },
-   "raw_instances_analyzed": 3670,
+   "raw_instances_analyzed": 2644,
    "resolve_log": {
-    "merged_motorcyclist": 933,
-    "riders_attached": 960,
-    "person_to_pedestrian": 86,
-    "ridden_default": 928,
-    "deoverlap_clipped": 407,
-    "deoverlap_fully_hidden": 9,
-    "drop_short_side_motorcyclist": 762,
+    "ridden_default": 1851,
+    "deoverlap_clipped": 325,
+    "drop_short_side_motorcyclist": 774,
     "images_resolved": 180,
+    "drop_small_car": 27,
     "drop_short_side_car": 38,
+    "deoverlap_fully_hidden": 20,
+    "drop_small_motorcyclist": 31,
     "drop_short_side_truck": 4,
-    "drop_short_side_pedestrian": 20,
-    "drop_short_side_bus": 1,
-    "drop_small_motorcyclist": 1
+    "drop_small_truck": 1,
+    "drop_short_side_bus": 1
    },
-   "dropped_small": 825,
+   "dropped_small": 817,
    "res_median": [
     640,
     423
@@ -526,12 +518,12 @@
     640,
     423
    ],
-   "inst_per_img_median": 10.0,
-   "inst_per_img_p90": 15.0,
+   "inst_per_img_median": 9.0,
+   "inst_per_img_p90": 14.0,
    "short_side_pct": {
     "p10": 0.78125,
-    "p50": 1.875,
-    "below_1_25": 29.1008174386921
+    "p50": 1.7187500000000002,
+    "below_1_25": 30.44629349470499
    },
    "night_share": 0.0
   },
@@ -551,6 +543,7 @@
     "cyclist",
     "motorcycle",
     "motorcyclist",
+    "other_vehicle",
     "pedestrian",
     "sign",
     "traffic_light",
@@ -560,9 +553,7 @@
     "other_vehicle"
    ],
    "teacher_completed": true,
-   "missing_classes": [
-    "other_vehicle"
-   ],
+   "missing_classes": [],
    "n_images": 2914,
    "n_label_files": 2914,
    "disk_bytes": 226682207,
@@ -917,46 +908,40 @@
    "analysis_mode": "full (work/converted)",
    "n_analyzed": 2914,
    "estimated_classes": {
-    "car": 1553,
-    "bus": 155,
-    "truck": 1112,
-    "other_vehicle": 0,
-    "motorcycle": 1092,
-    "motorcyclist": 1701,
-    "bicycle": 61,
-    "cyclist": 343,
-    "pedestrian": 3700,
-    "sign": 5467,
-    "traffic_light": 549
+    "car": 1668,
+    "bus": 165,
+    "truck": 1190,
+    "other_vehicle": 15,
+    "motorcycle": 274,
+    "motorcyclist": 2001,
+    "bicycle": 0,
+    "cyclist": 120,
+    "pedestrian": 669,
+    "sign": 6144,
+    "traffic_light": 582
    },
    "label_origin": {
     "sam_box": 5893,
-    "teacher": 13039
+    "teacher": 7520
    },
-   "raw_instances_analyzed": 18932,
+   "raw_instances_analyzed": 13413,
    "resolve_log": {
-    "person_to_pedestrian": 4024,
-    "deoverlap_clipped": 2364,
     "images_resolved": 2914,
-    "drop_ego_teacher": 148,
-    "merged_motorcyclist": 1708,
-    "riders_attached": 2065,
-    "drop_short_side_car": 25,
-    "deoverlap_fully_hidden": 112,
-    "merged_cyclist": 351,
-    "drop_short_side_sign": 425,
-    "drop_short_side_bicycle": 8,
-    "drop_short_side_cyclist": 8,
-    "drop_short_side_pedestrian": 313,
-    "drop_short_side_motorcycle": 61,
+    "deoverlap_clipped": 1279,
+    "drop_small_sign": 3,
+    "drop_short_side_car": 31,
+    "deoverlap_fully_hidden": 85,
+    "drop_short_side_sign": 431,
     "drop_short_side_traffic_light": 21,
-    "drop_short_side_motorcyclist": 7,
-    "drop_short_side_truck": 2,
-    "drop_small_truck": 1,
-    "drop_small_pedestrian": 1,
+    "drop_short_side_truck": 3,
+    "drop_small_bus": 1,
+    "drop_small_truck": 2,
+    "drop_short_side_cyclist": 1,
+    "drop_small_car": 3,
+    "drop_ego_teacher": 2,
     "drop_short_side_bus": 2
    },
-   "dropped_small": 872,
+   "dropped_small": 489,
    "res_median": [
     640,
     640
@@ -969,12 +954,12 @@
     640,
     640
    ],
-   "inst_per_img_median": 4.0,
-   "inst_per_img_p90": 13.0,
+   "inst_per_img_median": 3.0,
+   "inst_per_img_p90": 9.0,
    "short_side_pct": {
-    "p10": 1.5625,
-    "p50": 4.53125,
-    "below_1_25": 5.081343756602577
+    "p10": 1.875,
+    "p50": 5.625,
+    "below_1_25": 3.5487959442332064
    },
    "night_share": 0.0
   },
@@ -994,25 +979,22 @@
     "cyclist",
     "motorcycle",
     "motorcyclist",
+    "other_vehicle",
     "pedestrian",
+    "sign",
     "traffic_light",
     "truck"
    ],
-   "accept_missing": [
-    "other_vehicle"
-   ],
-   "teacher_completed": false,
-   "missing_classes": [
-    "other_vehicle",
-    "sign"
-   ],
+   "accept_missing": [],
+   "teacher_completed": true,
+   "missing_classes": [],
    "n_images": 6000,
    "n_label_files": 6000,
    "disk_bytes": 1116799943,
    "vocab": [
     {
      "raw": "pedestrian",
-     "token": "pedestrian",
+     "token": "@person",
      "count": 24149,
      "rule": true
     },
@@ -1072,7 +1054,7 @@
     }
    ],
    "tokens": {
-    "pedestrian": 24149,
+    "@person": 24149,
     "car": 15996,
     "traffic_light": 3781,
     "truck": 3369,
@@ -1084,39 +1066,58 @@
     "sign": 349
    },
    "unmapped": [],
-   "analysis_mode": "sample 300",
-   "n_analyzed": 300,
+   "analysis_mode": "full (work/converted)",
+   "n_analyzed": 6000,
    "estimated_classes": {
-    "car": 16740,
-    "bus": 2300,
-    "truck": 3880,
-    "other_vehicle": 0,
-    "motorcycle": 2680,
-    "motorcyclist": 720,
-    "bicycle": 2100,
-    "cyclist": 600,
-    "pedestrian": 22980,
-    "sign": 320,
-    "traffic_light": 4660
+    "car": 15586,
+    "bus": 2106,
+    "truck": 3320,
+    "other_vehicle": 183,
+    "motorcycle": 2429,
+    "motorcyclist": 846,
+    "bicycle": 1874,
+    "cyclist": 690,
+    "pedestrian": 23283,
+    "sign": 2391,
+    "traffic_light": 3736
    },
    "label_origin": {
-    "human": 2853
+    "human": 55662,
+    "teacher": 2304
    },
-   "raw_instances_analyzed": 2853,
+   "raw_instances_analyzed": 57966,
    "resolve_log": {
-    "deoverlap_clipped": 918,
-    "images_resolved": 300,
-    "drop_small_car": 2,
-    "drop_small_pedestrian": 2
+    "deoverlap_clipped": 17851,
+    "images_resolved": 6000,
+    "person_to_pedestrian": 23748,
+    "drop_small_bicycle": 34,
+    "drop_small_pedestrian": 409,
+    "drop_small_car": 394,
+    "drop_small_traffic_light": 41,
+    "merged_motorcyclist": 212,
+    "riders_attached": 401,
+    "drop_short_side_sign": 29,
+    "merged_cyclist": 183,
+    "deoverlap_fully_hidden": 95,
+    "drop_small_truck": 47,
+    "drop_small_other_vehicle": 1,
+    "drop_small_motorcycle": 20,
+    "drop_small_sign": 17,
+    "drop_short_side_pedestrian": 18,
+    "drop_short_side_traffic_light": 1,
+    "drop_short_side_car": 4,
+    "drop_small_bus": 7,
+    "drop_short_side_other_vehicle": 1,
+    "drop_small_motorcyclist": 3
    },
-   "dropped_small": 0,
+   "dropped_small": 53,
    "res_median": [
     640,
-    479
+    478
    ],
    "res_min": [
-    333,
-    205
+    247,
+    175
    ],
    "res_max": [
     640,
@@ -1125,84 +1126,11 @@
    "inst_per_img_median": 8.0,
    "inst_per_img_p90": 17.0,
    "short_side_pct": {
-    "p10": 1.7190624999999997,
-    "p50": 4.6875,
-    "below_1_25": 0.0
+    "p10": 1.7187500000000002,
+    "p50": 4.6,
+    "below_1_25": 0.03450298450815995
    },
-   "night_share": 0.06666666666666667
-  },
-  {
-   "id": "bdd100k_10k_images",
-   "name": "BDD100K – 10k ảnh (chưa có nhãn)",
-   "tier": "C",
-   "domain": "global",
-   "homepage": "https://bdd-data.berkeley.edu/",
-   "license": "BDD100K license (xem file LICENSE chính thức)",
-   "format": "images_only",
-   "citation": "Yu et al., BDD100K: A Diverse Driving Dataset for Heterogeneous Multitask Learning, CVPR 2020",
-   "labeled_classes": [],
-   "accept_missing": [],
-   "teacher_completed": false,
-   "missing_classes": [
-    "car",
-    "bus",
-    "truck",
-    "other_vehicle",
-    "motorcycle",
-    "motorcyclist",
-    "bicycle",
-    "cyclist",
-    "pedestrian",
-    "sign",
-    "traffic_light"
-   ],
-   "n_images": 10000,
-   "n_label_files": 0,
-   "disk_bytes": 1124992026,
-   "vocab": [],
-   "tokens": {},
-   "unmapped": [],
-   "analysis_mode": "sample 300",
-   "n_analyzed": 300,
-   "estimated_classes": {
-    "car": 0,
-    "bus": 0,
-    "truck": 0,
-    "other_vehicle": 0,
-    "motorcycle": 0,
-    "motorcyclist": 0,
-    "bicycle": 0,
-    "cyclist": 0,
-    "pedestrian": 0,
-    "sign": 0,
-    "traffic_light": 0
-   },
-   "label_origin": {},
-   "raw_instances_analyzed": 0,
-   "resolve_log": {
-    "images_resolved": 300
-   },
-   "dropped_small": 0,
-   "res_median": [
-    1280,
-    720
-   ],
-   "res_min": [
-    720,
-    720
-   ],
-   "res_max": [
-    1280,
-    1280
-   ],
-   "inst_per_img_median": 0.0,
-   "inst_per_img_p90": 0.0,
-   "short_side_pct": {
-    "p10": 0.0,
-    "p50": 0.0,
-    "below_1_25": 100.0
-   },
-   "night_share": 0.06666666666666667
+   "night_share": 0.04666666666666667
   },
   {
    "id": "nuimages",
@@ -1222,19 +1150,16 @@
     "motorcyclist",
     "other_vehicle",
     "pedestrian",
+    "sign",
+    "traffic_light",
     "truck"
    ],
-   "accept_missing": [
-    "sign"
-   ],
-   "teacher_completed": false,
-   "missing_classes": [
-    "sign",
-    "traffic_light"
-   ],
+   "accept_missing": [],
+   "teacher_completed": true,
+   "missing_classes": [],
    "n_images": 16000,
    "n_label_files": 16000,
-   "disk_bytes": 4818591429,
+   "disk_bytes": 4705399005,
    "vocab": [
     {
      "raw": "vehicle.car",
@@ -1420,30 +1345,36 @@
    "analysis_mode": "full (work/converted)",
    "n_analyzed": 16000,
    "estimated_classes": {
-    "car": 51273,
-    "bus": 5821,
-    "truck": 13353,
-    "other_vehicle": 6082,
-    "motorcycle": 4411,
-    "motorcyclist": 1866,
-    "bicycle": 8440,
-    "cyclist": 839,
-    "pedestrian": 17482,
-    "sign": 0,
-    "traffic_light": 0
+    "car": 48332,
+    "bus": 5673,
+    "truck": 13026,
+    "other_vehicle": 5970,
+    "motorcycle": 4253,
+    "motorcyclist": 1788,
+    "bicycle": 7934,
+    "cyclist": 823,
+    "pedestrian": 16490,
+    "sign": 3406,
+    "traffic_light": 1574
    },
    "label_origin": {
-    "human": 149540
+    "human": 149540,
+    "teacher": 5069
    },
-   "raw_instances_analyzed": 149540,
+   "raw_instances_analyzed": 154609,
    "resolve_log": {
     "images_resolved": 16000,
-    "deoverlap_clipped": 50266,
+    "deoverlap_clipped": 50559,
     "drop_short_side_car": 13874,
     "person_to_pedestrian": 38565,
     "ridden_default": 3049,
-    "drop_short_side_pedestrian": 20827,
+    "drop_short_side_pedestrian": 20826,
+    "drop_small_car": 3062,
+    "drop_small_other_vehicle": 133,
+    "drop_short_side_traffic_light": 70,
+    "drop_small_pedestrian": 1036,
     "drop_short_side_other_vehicle": 507,
+    "drop_small_truck": 361,
     "drop_short_side_cyclist": 98,
     "drop_short_side_truck": 1379,
     "drop_short_side_bicycle": 591,
@@ -1451,18 +1382,18 @@
     "riders_attached": 327,
     "drop_short_side_motorcyclist": 545,
     "drop_short_side_bus": 771,
-    "drop_small_pedestrian": 44,
+    "drop_small_bicycle": 551,
+    "drop_small_motorcycle": 176,
     "merged_motorcyclist": 121,
-    "deoverlap_fully_hidden": 471,
+    "deoverlap_fully_hidden": 482,
     "drop_short_side_motorcycle": 296,
-    "drop_small_car": 121,
-    "drop_small_bicycle": 45,
-    "drop_small_motorcycle": 18,
-    "drop_small_other_vehicle": 21,
-    "drop_small_truck": 34,
-    "drop_small_bus": 4
+    "drop_small_bus": 152,
+    "drop_small_motorcyclist": 78,
+    "drop_small_cyclist": 16,
+    "drop_short_side_sign": 8,
+    "drop_small_traffic_light": 1
    },
-   "dropped_small": 38888,
+   "dropped_small": 38965,
    "res_median": [
     1600,
     900
@@ -1479,8 +1410,8 @@
    "inst_per_img_p90": 13.0,
    "short_side_pct": {
     "p10": 0.8125,
-    "p50": 2.125,
-    "below_1_25": 25.418617092416746
+    "p50": 2.1875,
+    "below_1_25": 24.633106740228577
    },
    "night_share": 0.02
   },
@@ -1494,24 +1425,23 @@
    "format": "coco_bbox",
    "citation": "shravya11, Tuk Tuk and Rickshaw Detection, Hugging Face Datasets (from Roboflow Universe)",
    "labeled_classes": [
-    "other_vehicle"
+    "bicycle",
+    "bus",
+    "car",
+    "cyclist",
+    "motorcycle",
+    "motorcyclist",
+    "other_vehicle",
+    "pedestrian",
+    "sign",
+    "traffic_light",
+    "truck"
    ],
    "accept_missing": [
     "sign"
    ],
-   "teacher_completed": false,
-   "missing_classes": [
-    "car",
-    "bus",
-    "truck",
-    "motorcycle",
-    "motorcyclist",
-    "bicycle",
-    "cyclist",
-    "pedestrian",
-    "sign",
-    "traffic_light"
-   ],
+   "teacher_completed": true,
+   "missing_classes": [],
    "n_images": 7287,
    "n_label_files": 5891,
    "disk_bytes": 991024462,
@@ -1657,29 +1587,42 @@
    "analysis_mode": "full (work/converted)",
    "n_analyzed": 1800,
    "estimated_classes": {
-    "car": 1014,
-    "bus": 83,
-    "truck": 87,
-    "other_vehicle": 3373,
-    "motorcycle": 454,
-    "motorcyclist": 0,
-    "bicycle": 11,
-    "cyclist": 0,
-    "pedestrian": 0,
-    "sign": 0,
-    "traffic_light": 0
+    "car": 2613,
+    "bus": 610,
+    "truck": 1027,
+    "other_vehicle": 2873,
+    "motorcycle": 512,
+    "motorcyclist": 236,
+    "bicycle": 12,
+    "cyclist": 34,
+    "pedestrian": 1071,
+    "sign": 54,
+    "traffic_light": 187
    },
    "label_origin": {
-    "human": 5043
+    "sam_box": 5041,
+    "teacher": 4984
    },
-   "raw_instances_analyzed": 5043,
+   "raw_instances_analyzed": 10025,
    "resolve_log": {
+    "deoverlap_clipped": 3356,
     "images_resolved": 1800,
-    "drop_short_side_motorcycle": 14,
-    "drop_short_side_other_vehicle": 6,
-    "drop_short_side_car": 1
+    "drop_small_car": 32,
+    "deoverlap_fully_hidden": 396,
+    "drop_short_side_other_vehicle": 125,
+    "drop_small_other_vehicle": 133,
+    "drop_short_side_motorcycle": 29,
+    "drop_short_side_bus": 12,
+    "drop_small_truck": 15,
+    "drop_short_side_pedestrian": 4,
+    "drop_short_side_car": 26,
+    "drop_small_bus": 9,
+    "drop_small_pedestrian": 2,
+    "drop_short_side_traffic_light": 6,
+    "drop_short_side_truck": 6,
+    "drop_short_side_sign": 1
    },
-   "dropped_small": 21,
+   "dropped_small": 209,
    "res_median": [
     640,
     640
@@ -1692,87 +1635,14 @@
     4224,
     5632
    ],
-   "inst_per_img_median": 1.0,
-   "inst_per_img_p90": 5.0,
+   "inst_per_img_median": 3.0,
+   "inst_per_img_p90": 10.0,
    "short_side_pct": {
-    "p10": 3.5937499999999996,
-    "p50": 13.28125,
-    "below_1_25": 0.41641879833432477
+    "p10": 2.96875,
+    "p50": 10.15625,
+    "below_1_25": 0.5286783042394015
    },
    "night_share": 0.03333333333333333
-  },
-  {
-   "id": "acdc_half",
-   "name": "ACDC – nửa mỗi điều kiện (fog/night/rain/snow), chưa có nhãn",
-   "tier": "D",
-   "domain": "global",
-   "homepage": "https://acdc.vision.ee.ethz.ch/",
-   "license": "ACDC license (phi thương mại)",
-   "format": "images_only",
-   "citation": "Sakaridis et al., ACDC: The Adverse Conditions Dataset with Correspondences, ICCV 2021 / T-PAMI 2025",
-   "labeled_classes": [],
-   "accept_missing": [],
-   "teacher_completed": false,
-   "missing_classes": [
-    "car",
-    "bus",
-    "truck",
-    "other_vehicle",
-    "motorcycle",
-    "motorcyclist",
-    "bicycle",
-    "cyclist",
-    "pedestrian",
-    "sign",
-    "traffic_light"
-   ],
-   "n_images": 2029,
-   "n_label_files": 0,
-   "disk_bytes": 3771209242,
-   "vocab": [],
-   "tokens": {},
-   "unmapped": [],
-   "analysis_mode": "sample 300",
-   "n_analyzed": 300,
-   "estimated_classes": {
-    "car": 0,
-    "bus": 0,
-    "truck": 0,
-    "other_vehicle": 0,
-    "motorcycle": 0,
-    "motorcyclist": 0,
-    "bicycle": 0,
-    "cyclist": 0,
-    "pedestrian": 0,
-    "sign": 0,
-    "traffic_light": 0
-   },
-   "label_origin": {},
-   "raw_instances_analyzed": 0,
-   "resolve_log": {
-    "images_resolved": 300
-   },
-   "dropped_small": 0,
-   "res_median": [
-    1920,
-    1080
-   ],
-   "res_min": [
-    1920,
-    1080
-   ],
-   "res_max": [
-    1920,
-    1080
-   ],
-   "inst_per_img_median": 0.0,
-   "inst_per_img_p90": 0.0,
-   "short_side_pct": {
-    "p10": 0.0,
-    "p50": 0.0,
-    "below_1_25": 100.0
-   },
-   "night_share": 0.0
   },
   {
    "id": "idd_segmentation",
@@ -2173,51 +2043,58 @@
      "rule": false
     }
    ],
-   "analysis_mode": "sample 300",
-   "n_analyzed": 300,
+   "analysis_mode": "full (work/converted)",
+   "n_analyzed": 7974,
    "estimated_classes": {
-    "car": 28015,
-    "bus": 5396,
-    "truck": 8107,
-    "other_vehicle": 12120,
-    "motorcycle": 12227,
-    "motorcyclist": 15151,
-    "bicycle": 292,
-    "cyclist": 452,
-    "pedestrian": 11775,
-    "sign": 3163,
-    "traffic_light": 452
+    "car": 26224,
+    "bus": 4780,
+    "truck": 7646,
+    "other_vehicle": 10612,
+    "motorcycle": 9674,
+    "motorcyclist": 14302,
+    "bicycle": 307,
+    "cyclist": 311,
+    "pedestrian": 12204,
+    "sign": 2404,
+    "traffic_light": 442
    },
    "label_origin": {
-    "human": 7011
+    "human": 179810
    },
-   "raw_instances_analyzed": 7011,
+   "raw_instances_analyzed": 179810,
    "resolve_log": {
-    "merged_motorcyclist": 848,
-    "riders_attached": 933,
-    "deoverlap_clipped": 2383,
-    "drop_short_side_car": 454,
-    "drop_short_side_other_vehicle": 497,
-    "drop_short_side_motorcycle": 129,
-    "drop_short_side_pedestrian": 496,
-    "drop_short_side_motorcyclist": 278,
-    "images_resolved": 300,
-    "unmatched_rider_dropped": 265,
-    "drop_token_@ignore": 265,
-    "drop_short_side_sign": 148,
-    "merged_cyclist": 20,
-    "drop_short_side_traffic_light": 40,
-    "drop_short_side_truck": 50,
-    "drop_short_side_bus": 48,
-    "drop_small_other_vehicle": 3,
-    "drop_short_side_bicycle": 5,
-    "deoverlap_fully_hidden": 2,
-    "drop_small_motorcycle": 2,
-    "drop_short_side_cyclist": 3,
-    "drop_small_car": 2,
-    "drop_small_truck": 1
+    "merged_motorcyclist": 21160,
+    "riders_attached": 23111,
+    "unmatched_rider_dropped": 8710,
+    "drop_token_@ignore": 8710,
+    "deoverlap_clipped": 61976,
+    "drop_short_side_motorcycle": 3623,
+    "drop_short_side_other_vehicle": 11952,
+    "images_resolved": 7974,
+    "drop_short_side_traffic_light": 759,
+    "drop_short_side_pedestrian": 13052,
+    "drop_small_other_vehicle": 1177,
+    "drop_short_side_car": 11092,
+    "drop_short_side_motorcyclist": 6619,
+    "drop_small_car": 2253,
+    "drop_short_side_sign": 3164,
+    "drop_small_sign": 177,
+    "drop_short_side_truck": 1327,
+    "drop_small_truck": 269,
+    "drop_small_motorcycle": 1031,
+    "drop_small_pedestrian": 775,
+    "drop_small_bus": 205,
+    "drop_short_side_bus": 1116,
+    "merged_cyclist": 419,
+    "drop_short_side_bicycle": 66,
+    "drop_short_side_cyclist": 101,
+    "drop_small_motorcyclist": 239,
+    "deoverlap_fully_hidden": 41,
+    "drop_small_traffic_light": 18,
+    "drop_small_bicycle": 20,
+    "drop_small_cyclist": 7
    },
-   "dropped_small": 2148,
+   "dropped_small": 52871,
    "res_median": [
     1920,
     1080
@@ -2230,12 +2107,12 @@
     1920,
     1080
    ],
-   "inst_per_img_median": 10.5,
-   "inst_per_img_p90": 23.100000000000023,
+   "inst_per_img_median": 10.0,
+   "inst_per_img_p90": 21.0,
    "short_side_pct": {
     "p10": 0.5000000000000012,
-    "p50": 1.640625,
-    "below_1_25": 38.938810440735985
+    "p50": 1.6874999999999987,
+    "below_1_25": 38.001779656303874
    },
    "night_share": 0.013333333333333334
   },
@@ -3312,69 +3189,1278 @@
      "rule": false
     }
    ],
-   "analysis_mode": "sample 300",
-   "n_analyzed": 300,
+   "analysis_mode": "full (work/converted)",
+   "n_analyzed": 5390,
    "estimated_classes": {
-    "car": 48262,
-    "bus": 2300,
-    "truck": 3300,
-    "other_vehicle": 967,
-    "motorcycle": 1000,
-    "motorcyclist": 1633,
-    "bicycle": 1333,
-    "cyclist": 1800,
-    "pedestrian": 11999,
-    "sign": 19498,
-    "traffic_light": 12032
+    "car": 24276,
+    "bus": 967,
+    "truck": 1501,
+    "other_vehicle": 436,
+    "motorcycle": 520,
+    "motorcyclist": 504,
+    "bicycle": 623,
+    "cyclist": 647,
+    "pedestrian": 5850,
+    "sign": 9615,
+    "traffic_light": 6154
    },
    "label_origin": {
-    "human": 7047
+    "human": 120903
    },
-   "raw_instances_analyzed": 7047,
+   "raw_instances_analyzed": 120903,
    "resolve_log": {
-    "drop_short_side_sign": 1244,
-    "images_resolved": 300,
-    "merged_cyclist": 76,
-    "riders_attached": 152,
-    "drop_short_side_traffic_light": 881,
-    "drop_short_side_pedestrian": 553,
-    "merged_motorcyclist": 67,
-    "unmatched_rider_kept": 47,
-    "deoverlap_clipped": 1556,
-    "drop_short_side_motorcyclist": 47,
-    "drop_short_side_car": 902,
-    "drop_short_side_motorcycle": 20,
-    "drop_short_side_bicycle": 25,
-    "drop_short_side_cyclist": 39,
-    "drop_short_side_truck": 18,
-    "drop_short_side_bus": 26,
-    "drop_short_side_other_vehicle": 8,
-    "drop_small_car": 2,
-    "unmatched_rider_dropped": 2,
-    "drop_token_@ignore": 2,
-    "deoverlap_fully_hidden": 2,
-    "drop_small_motorcycle": 1,
-    "drop_small_motorcyclist": 1
+    "deoverlap_clipped": 25269,
+    "images_resolved": 5390,
+    "drop_short_side_traffic_light": 15108,
+    "drop_short_side_sign": 23553,
+    "drop_short_side_car": 13982,
+    "merged_motorcyclist": 833,
+    "riders_attached": 1815,
+    "unmatched_rider_kept": 445,
+    "drop_short_side_pedestrian": 9444,
+    "drop_short_side_motorcycle": 261,
+    "drop_short_side_motorcyclist": 519,
+    "drop_small_pedestrian": 440,
+    "merged_cyclist": 891,
+    "drop_small_car": 1693,
+    "drop_short_side_truck": 473,
+    "drop_small_motorcyclist": 40,
+    "drop_short_side_bus": 284,
+    "unmatched_rider_dropped": 75,
+    "drop_token_@ignore": 75,
+    "drop_small_traffic_light": 215,
+    "drop_small_sign": 576,
+    "drop_small_bus": 29,
+    "drop_small_truck": 52,
+    "deoverlap_fully_hidden": 114,
+    "drop_short_side_other_vehicle": 107,
+    "drop_short_side_bicycle": 387,
+    "drop_short_side_cyclist": 410,
+    "drop_small_bicycle": 112,
+    "drop_small_motorcycle": 61,
+    "drop_small_cyclist": 37,
+    "drop_small_other_vehicle": 23
    },
-   "dropped_small": 3763,
+   "dropped_small": 64528,
    "res_median": [
     3264,
     2448
    ],
    "res_min": [
-    1024,
-    720
+    640,
+    480
    ],
    "res_max": [
-    5248,
+    5376,
     5248
    ],
-   "inst_per_img_median": 9.5,
-   "inst_per_img_p90": 19.0,
+   "inst_per_img_median": 9.0,
+   "inst_per_img_p90": 18.0,
    "short_side_pct": {
-    "p10": 0.31250000000000105,
-    "p50": 1.1249999999999984,
-    "below_1_25": 54.56222506030935
+    "p10": 0.3124999999999978,
+    "p50": 1.1249999999999982,
+    "below_1_25": 54.25837241424944
+   },
+   "night_share": 0.013333333333333334
+  },
+  {
+   "id": "mapillary_vistas_v2_poly",
+   "name": "Mapillary Vistas v2.0 – phần chỉ có polygons (752 ảnh)",
+   "tier": "C",
+   "domain": "global",
+   "homepage": "https://www.mapillary.com/dataset/vistas (bản sao HF: https://huggingface.co/datasets/ali-sh07/Mapillary-dataset)",
+   "license": "CC BY-NC-SA 4.0 (Research edition)",
+   "format": "polygons_json",
+   "citation": "Neuhold et al., The Mapillary Vistas Dataset for Semantic Understanding of Street Scenes, ICCV 2017",
+   "labeled_classes": [
+    "bicycle",
+    "bus",
+    "car",
+    "cyclist",
+    "motorcycle",
+    "motorcyclist",
+    "other_vehicle",
+    "pedestrian",
+    "sign",
+    "traffic_light",
+    "truck"
+   ],
+   "accept_missing": [],
+   "teacher_completed": false,
+   "missing_classes": [],
+   "n_images": 9999,
+   "n_label_files": 752,
+   "disk_bytes": 9168665369,
+   "vocab": [
+    {
+     "raw": "object--support--pole",
+     "token": "@ignore",
+     "count": 11517,
+     "rule": false
+    },
+    {
+     "raw": "object--vehicle--car",
+     "token": "car",
+     "count": 5712,
+     "rule": true
+    },
+    {
+     "raw": "object--street-light",
+     "token": "@ignore",
+     "count": 5050,
+     "rule": true
+    },
+    {
+     "raw": "void--static",
+     "token": "@ignore",
+     "count": 3879,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-sign--front",
+     "token": "sign",
+     "count": 3489,
+     "rule": true
+    },
+    {
+     "raw": "nature--vegetation",
+     "token": "@ignore",
+     "count": 2807,
+     "rule": false
+    },
+    {
+     "raw": "object--support--utility-pole",
+     "token": "@ignore",
+     "count": 2566,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--curb",
+     "token": "@ignore",
+     "count": 2405,
+     "rule": false
+    },
+    {
+     "raw": "human--person--individual",
+     "token": "pedestrian",
+     "count": 2037,
+     "rule": true
+    },
+    {
+     "raw": "object--traffic-light--general-upright",
+     "token": "traffic_light",
+     "count": 1741,
+     "rule": true
+    },
+    {
+     "raw": "marking--continuous--solid",
+     "token": "@ignore",
+     "count": 1736,
+     "rule": true
+    },
+    {
+     "raw": "object--sign--advertisement",
+     "token": "@ignore",
+     "count": 1528,
+     "rule": true
+    },
+    {
+     "raw": "object--traffic-sign--back",
+     "token": "@ignore",
+     "count": 1288,
+     "rule": true
+    },
+    {
+     "raw": "construction--structure--building",
+     "token": "@ignore",
+     "count": 1223,
+     "rule": false
+    },
+    {
+     "raw": "marking--continuous--dashed",
+     "token": "@ignore",
+     "count": 1218,
+     "rule": true
+    },
+    {
+     "raw": "construction--flat--sidewalk",
+     "token": "@ignore",
+     "count": 1182,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--fence",
+     "token": "@ignore",
+     "count": 1068,
+     "rule": false
+    },
+    {
+     "raw": "object--sign--store",
+     "token": "@ignore",
+     "count": 1054,
+     "rule": true
+    },
+    {
+     "raw": "object--traffic-sign--direction-front",
+     "token": "sign",
+     "count": 987,
+     "rule": true
+    },
+    {
+     "raw": "nature--terrain",
+     "token": "@ignore",
+     "count": 820,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--road",
+     "token": "@ignore",
+     "count": 776,
+     "rule": false
+    },
+    {
+     "raw": "nature--sky",
+     "token": "@ignore",
+     "count": 749,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--curb-cut",
+     "token": "@ignore",
+     "count": 733,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-light--pedestrians",
+     "token": "traffic_light",
+     "count": 683,
+     "rule": true
+    },
+    {
+     "raw": "void--dynamic",
+     "token": "@ignore",
+     "count": 613,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--wall",
+     "token": "@ignore",
+     "count": 611,
+     "rule": false
+    },
+    {
+     "raw": "object--vehicle--vehicle-group",
+     "token": "@ignore",
+     "count": 502,
+     "rule": true
+    },
+    {
+     "raw": "void--ground",
+     "token": "@ignore",
+     "count": 497,
+     "rule": false
+    },
+    {
+     "raw": "marking--discrete--other-marking",
+     "token": "@ignore",
+     "count": 451,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--crosswalk-zebra",
+     "token": "@ignore",
+     "count": 442,
+     "rule": true
+    },
+    {
+     "raw": "object--banner",
+     "token": "@ignore",
+     "count": 432,
+     "rule": false
+    },
+    {
+     "raw": "object--manhole",
+     "token": "@ignore",
+     "count": 413,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--traffic-island",
+     "token": "@ignore",
+     "count": 384,
+     "rule": false
+    },
+    {
+     "raw": "object--sign--ambiguous",
+     "token": "@ignore",
+     "count": 377,
+     "rule": true
+    },
+    {
+     "raw": "object--vehicle--truck",
+     "token": "truck",
+     "count": 338,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--stop-line",
+     "token": "@ignore",
+     "count": 334,
+     "rule": true
+    },
+    {
+     "raw": "object--vehicle--bicycle",
+     "token": "bicycle",
+     "count": 277,
+     "rule": true
+    },
+    {
+     "raw": "void--ego-vehicle",
+     "token": "@ignore",
+     "count": 263,
+     "rule": true
+    },
+    {
+     "raw": "object--vehicle--motorcycle",
+     "token": "motorcycle",
+     "count": 261,
+     "rule": true
+    },
+    {
+     "raw": "object--traffic-sign--direction-back",
+     "token": "@ignore",
+     "count": 240,
+     "rule": true
+    },
+    {
+     "raw": "construction--barrier--guard-rail",
+     "token": "@ignore",
+     "count": 236,
+     "rule": false
+    },
+    {
+     "raw": "object--junction-box",
+     "token": "@ignore",
+     "count": 228,
+     "rule": false
+    },
+    {
+     "raw": "object--catch-basin",
+     "token": "@ignore",
+     "count": 223,
+     "rule": false
+    },
+    {
+     "raw": "object--trash-can",
+     "token": "@ignore",
+     "count": 217,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-light--general-horizontal",
+     "token": "traffic_light",
+     "count": 199,
+     "rule": true
+    },
+    {
+     "raw": "construction--barrier--temporary",
+     "token": "@ignore",
+     "count": 192,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-cone",
+     "token": "@ignore",
+     "count": 191,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--concrete-block",
+     "token": "@ignore",
+     "count": 176,
+     "rule": false
+    },
+    {
+     "raw": "object--cctv-camera",
+     "token": "@ignore",
+     "count": 175,
+     "rule": false
+    },
+    {
+     "raw": "construction--structure--bridge",
+     "token": "@ignore",
+     "count": 173,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-light--other",
+     "token": "traffic_light",
+     "count": 171,
+     "rule": true
+    },
+    {
+     "raw": "object--vehicle--bus",
+     "token": "bus",
+     "count": 171,
+     "rule": true
+    },
+    {
+     "raw": "object--support--pole-group",
+     "token": "@ignore",
+     "count": 165,
+     "rule": false
+    },
+    {
+     "raw": "human--rider--motorcyclist",
+     "token": "@rider_moto",
+     "count": 165,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--ambiguous",
+     "token": "@ignore",
+     "count": 164,
+     "rule": true
+    },
+    {
+     "raw": "construction--flat--parking",
+     "token": "@ignore",
+     "count": 157,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--driveway",
+     "token": "@ignore",
+     "count": 151,
+     "rule": false
+    },
+    {
+     "raw": "human--person--person-group",
+     "token": "@ignore",
+     "count": 151,
+     "rule": true
+    },
+    {
+     "raw": "construction--flat--crosswalk-plain",
+     "token": "@ignore",
+     "count": 148,
+     "rule": false
+    },
+    {
+     "raw": "object--support--traffic-sign-frame",
+     "token": "@ignore",
+     "count": 145,
+     "rule": true
+    },
+    {
+     "raw": "human--rider--bicyclist",
+     "token": "@rider_bike",
+     "count": 145,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--arrow--straight",
+     "token": "@ignore",
+     "count": 144,
+     "rule": true
+    },
+    {
+     "raw": "object--traffic-sign--information-parking",
+     "token": "sign",
+     "count": 123,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--hatched--diagonal",
+     "token": "@ignore",
+     "count": 111,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--text",
+     "token": "@ignore",
+     "count": 111,
+     "rule": true
+    },
+    {
+     "raw": "nature--snow",
+     "token": "@ignore",
+     "count": 103,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-sign--ambiguous",
+     "token": "sign",
+     "count": 98,
+     "rule": true
+    },
+    {
+     "raw": "nature--mountain",
+     "token": "@ignore",
+     "count": 97,
+     "rule": false
+    },
+    {
+     "raw": "object--bike-rack",
+     "token": "@ignore",
+     "count": 90,
+     "rule": true
+    },
+    {
+     "raw": "construction--flat--road-shoulder",
+     "token": "@ignore",
+     "count": 86,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--separator",
+     "token": "@ignore",
+     "count": 86,
+     "rule": false
+    },
+    {
+     "raw": "object--fire-hydrant",
+     "token": "@ignore",
+     "count": 85,
+     "rule": false
+    },
+    {
+     "raw": "animal--bird",
+     "token": "@ignore",
+     "count": 85,
+     "rule": false
+    },
+    {
+     "raw": "object--bench",
+     "token": "@ignore",
+     "count": 76,
+     "rule": false
+    },
+    {
+     "raw": "object--sign--information",
+     "token": "@ignore",
+     "count": 74,
+     "rule": true
+    },
+    {
+     "raw": "object--sign--other",
+     "token": "@ignore",
+     "count": 71,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--symbol--bicycle",
+     "token": "@ignore",
+     "count": 71,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--arrow--left",
+     "token": "@ignore",
+     "count": 67,
+     "rule": true
+    },
+    {
+     "raw": "construction--flat--service-lane",
+     "token": "@ignore",
+     "count": 63,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--bike-lane",
+     "token": "@ignore",
+     "count": 61,
+     "rule": false
+    },
+    {
+     "raw": "marking--discrete--arrow--other",
+     "token": "@ignore",
+     "count": 59,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--arrow--right",
+     "token": "@ignore",
+     "count": 57,
+     "rule": true
+    },
+    {
+     "raw": "void--car-mount",
+     "token": "@ignore",
+     "count": 54,
+     "rule": true
+    },
+    {
+     "raw": "object--sign--back",
+     "token": "@ignore",
+     "count": 50,
+     "rule": true
+    },
+    {
+     "raw": "object--vehicle--other-vehicle",
+     "token": "other_vehicle",
+     "count": 44,
+     "rule": true
+    },
+    {
+     "raw": "object--mailbox",
+     "token": "@ignore",
+     "count": 42,
+     "rule": false
+    },
+    {
+     "raw": "object--vehicle--wheeled-slow",
+     "token": "@ignore",
+     "count": 40,
+     "rule": true
+    },
+    {
+     "raw": "object--water-valve",
+     "token": "@ignore",
+     "count": 38,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-light--general-single",
+     "token": "traffic_light",
+     "count": 34,
+     "rule": true
+    },
+    {
+     "raw": "construction--flat--rail-track",
+     "token": "@ignore",
+     "count": 32,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--road-side",
+     "token": "@ignore",
+     "count": 30,
+     "rule": false
+    },
+    {
+     "raw": "marking-only--continuous--dashed",
+     "token": "@ignore",
+     "count": 29,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--hatched--chevron",
+     "token": "@ignore",
+     "count": 27,
+     "rule": true
+    },
+    {
+     "raw": "nature--water",
+     "token": "@ignore",
+     "count": 25,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-sign--temporary-front",
+     "token": "sign",
+     "count": 25,
+     "rule": true
+    },
+    {
+     "raw": "object--traffic-light--cyclists",
+     "token": "traffic_light",
+     "count": 22,
+     "rule": true
+    },
+    {
+     "raw": "marking-only--discrete--crosswalk-zebra",
+     "token": "@ignore",
+     "count": 22,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--arrow--split-left-or-straight",
+     "token": "@ignore",
+     "count": 21,
+     "rule": true
+    },
+    {
+     "raw": "object--parking-meter",
+     "token": "@ignore",
+     "count": 21,
+     "rule": false
+    },
+    {
+     "raw": "marking--discrete--arrow--split-right-or-straight",
+     "token": "@ignore",
+     "count": 21,
+     "rule": true
+    },
+    {
+     "raw": "marking-only--discrete--other-marking",
+     "token": "@ignore",
+     "count": 21,
+     "rule": true
+    },
+    {
+     "raw": "object--pothole",
+     "token": "@ignore",
+     "count": 20,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--road-median",
+     "token": "@ignore",
+     "count": 20,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--pedestrian-area",
+     "token": "@ignore",
+     "count": 19,
+     "rule": false
+    },
+    {
+     "raw": "object--vehicle--boat",
+     "token": "@ignore",
+     "count": 17,
+     "rule": true
+    },
+    {
+     "raw": "construction--barrier--ambiguous",
+     "token": "@ignore",
+     "count": 17,
+     "rule": false
+    },
+    {
+     "raw": "marking--continuous--zigzag",
+     "token": "@ignore",
+     "count": 16,
+     "rule": true
+    },
+    {
+     "raw": "animal--ground-animal",
+     "token": "@ignore",
+     "count": 14,
+     "rule": false
+    },
+    {
+     "raw": "marking--discrete--symbol--other",
+     "token": "@ignore",
+     "count": 13,
+     "rule": true
+    },
+    {
+     "raw": "construction--structure--garage",
+     "token": "@ignore",
+     "count": 11,
+     "rule": false
+    },
+    {
+     "raw": "construction--structure--tunnel",
+     "token": "@ignore",
+     "count": 10,
+     "rule": false
+    },
+    {
+     "raw": "object--vehicle--trailer",
+     "token": "other_vehicle",
+     "count": 9,
+     "rule": true
+    },
+    {
+     "raw": "nature--sand",
+     "token": "@ignore",
+     "count": 9,
+     "rule": false
+    },
+    {
+     "raw": "object--phone-booth",
+     "token": "@ignore",
+     "count": 8,
+     "rule": false
+    },
+    {
+     "raw": "marking--discrete--give-way-single",
+     "token": "@ignore",
+     "count": 8,
+     "rule": true
+    },
+    {
+     "raw": "object--vehicle--on-rails",
+     "token": "other_vehicle",
+     "count": 8,
+     "rule": true
+    },
+    {
+     "raw": "human--rider--other-rider",
+     "token": "@rider",
+     "count": 3,
+     "rule": true
+    },
+    {
+     "raw": "marking--discrete--give-way-row",
+     "token": "@ignore",
+     "count": 3,
+     "rule": true
+    },
+    {
+     "raw": "construction--flat--parking-aisle",
+     "token": "@ignore",
+     "count": 3,
+     "rule": false
+    },
+    {
+     "raw": "object--vehicle--caravan",
+     "token": "other_vehicle",
+     "count": 3,
+     "rule": true
+    },
+    {
+     "raw": "marking-only--discrete--text",
+     "token": "@ignore",
+     "count": 3,
+     "rule": true
+    },
+    {
+     "raw": "construction--barrier--other-barrier",
+     "token": "@ignore",
+     "count": 2,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-sign--temporary-back",
+     "token": "@ignore",
+     "count": 2,
+     "rule": true
+    }
+   ],
+   "tokens": {
+    "@ignore": 52315,
+    "car": 5712,
+    "sign": 4722,
+    "pedestrian": 2037,
+    "traffic_light": 2850,
+    "truck": 338,
+    "bicycle": 277,
+    "motorcycle": 261,
+    "bus": 171,
+    "@rider_moto": 165,
+    "@rider_bike": 145,
+    "other_vehicle": 64,
+    "@rider": 3
+   },
+   "unmapped": [
+    {
+     "raw": "object--support--pole",
+     "token": "@ignore",
+     "count": 11517,
+     "rule": false
+    },
+    {
+     "raw": "void--static",
+     "token": "@ignore",
+     "count": 3879,
+     "rule": false
+    },
+    {
+     "raw": "nature--vegetation",
+     "token": "@ignore",
+     "count": 2807,
+     "rule": false
+    },
+    {
+     "raw": "object--support--utility-pole",
+     "token": "@ignore",
+     "count": 2566,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--curb",
+     "token": "@ignore",
+     "count": 2405,
+     "rule": false
+    },
+    {
+     "raw": "construction--structure--building",
+     "token": "@ignore",
+     "count": 1223,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--sidewalk",
+     "token": "@ignore",
+     "count": 1182,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--fence",
+     "token": "@ignore",
+     "count": 1068,
+     "rule": false
+    },
+    {
+     "raw": "nature--terrain",
+     "token": "@ignore",
+     "count": 820,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--road",
+     "token": "@ignore",
+     "count": 776,
+     "rule": false
+    },
+    {
+     "raw": "nature--sky",
+     "token": "@ignore",
+     "count": 749,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--curb-cut",
+     "token": "@ignore",
+     "count": 733,
+     "rule": false
+    },
+    {
+     "raw": "void--dynamic",
+     "token": "@ignore",
+     "count": 613,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--wall",
+     "token": "@ignore",
+     "count": 611,
+     "rule": false
+    },
+    {
+     "raw": "void--ground",
+     "token": "@ignore",
+     "count": 497,
+     "rule": false
+    },
+    {
+     "raw": "object--banner",
+     "token": "@ignore",
+     "count": 432,
+     "rule": false
+    },
+    {
+     "raw": "object--manhole",
+     "token": "@ignore",
+     "count": 413,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--traffic-island",
+     "token": "@ignore",
+     "count": 384,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--guard-rail",
+     "token": "@ignore",
+     "count": 236,
+     "rule": false
+    },
+    {
+     "raw": "object--junction-box",
+     "token": "@ignore",
+     "count": 228,
+     "rule": false
+    },
+    {
+     "raw": "object--catch-basin",
+     "token": "@ignore",
+     "count": 223,
+     "rule": false
+    },
+    {
+     "raw": "object--trash-can",
+     "token": "@ignore",
+     "count": 217,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--temporary",
+     "token": "@ignore",
+     "count": 192,
+     "rule": false
+    },
+    {
+     "raw": "object--traffic-cone",
+     "token": "@ignore",
+     "count": 191,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--concrete-block",
+     "token": "@ignore",
+     "count": 176,
+     "rule": false
+    },
+    {
+     "raw": "object--cctv-camera",
+     "token": "@ignore",
+     "count": 175,
+     "rule": false
+    },
+    {
+     "raw": "construction--structure--bridge",
+     "token": "@ignore",
+     "count": 173,
+     "rule": false
+    },
+    {
+     "raw": "object--support--pole-group",
+     "token": "@ignore",
+     "count": 165,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--parking",
+     "token": "@ignore",
+     "count": 157,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--driveway",
+     "token": "@ignore",
+     "count": 151,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--crosswalk-plain",
+     "token": "@ignore",
+     "count": 148,
+     "rule": false
+    },
+    {
+     "raw": "nature--snow",
+     "token": "@ignore",
+     "count": 103,
+     "rule": false
+    },
+    {
+     "raw": "nature--mountain",
+     "token": "@ignore",
+     "count": 97,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--road-shoulder",
+     "token": "@ignore",
+     "count": 86,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--separator",
+     "token": "@ignore",
+     "count": 86,
+     "rule": false
+    },
+    {
+     "raw": "object--fire-hydrant",
+     "token": "@ignore",
+     "count": 85,
+     "rule": false
+    },
+    {
+     "raw": "animal--bird",
+     "token": "@ignore",
+     "count": 85,
+     "rule": false
+    },
+    {
+     "raw": "object--bench",
+     "token": "@ignore",
+     "count": 76,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--service-lane",
+     "token": "@ignore",
+     "count": 63,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--bike-lane",
+     "token": "@ignore",
+     "count": 61,
+     "rule": false
+    },
+    {
+     "raw": "object--mailbox",
+     "token": "@ignore",
+     "count": 42,
+     "rule": false
+    },
+    {
+     "raw": "object--water-valve",
+     "token": "@ignore",
+     "count": 38,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--rail-track",
+     "token": "@ignore",
+     "count": 32,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--road-side",
+     "token": "@ignore",
+     "count": 30,
+     "rule": false
+    },
+    {
+     "raw": "nature--water",
+     "token": "@ignore",
+     "count": 25,
+     "rule": false
+    },
+    {
+     "raw": "object--parking-meter",
+     "token": "@ignore",
+     "count": 21,
+     "rule": false
+    },
+    {
+     "raw": "object--pothole",
+     "token": "@ignore",
+     "count": 20,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--road-median",
+     "token": "@ignore",
+     "count": 20,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--pedestrian-area",
+     "token": "@ignore",
+     "count": 19,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--ambiguous",
+     "token": "@ignore",
+     "count": 17,
+     "rule": false
+    },
+    {
+     "raw": "animal--ground-animal",
+     "token": "@ignore",
+     "count": 14,
+     "rule": false
+    },
+    {
+     "raw": "construction--structure--garage",
+     "token": "@ignore",
+     "count": 11,
+     "rule": false
+    },
+    {
+     "raw": "construction--structure--tunnel",
+     "token": "@ignore",
+     "count": 10,
+     "rule": false
+    },
+    {
+     "raw": "nature--sand",
+     "token": "@ignore",
+     "count": 9,
+     "rule": false
+    },
+    {
+     "raw": "object--phone-booth",
+     "token": "@ignore",
+     "count": 8,
+     "rule": false
+    },
+    {
+     "raw": "construction--flat--parking-aisle",
+     "token": "@ignore",
+     "count": 3,
+     "rule": false
+    },
+    {
+     "raw": "construction--barrier--other-barrier",
+     "token": "@ignore",
+     "count": 2,
+     "rule": false
+    }
+   ],
+   "analysis_mode": "full (work/converted)",
+   "n_analyzed": 752,
+   "estimated_classes": {
+    "car": 3441,
+    "bus": 129,
+    "truck": 258,
+    "other_vehicle": 50,
+    "motorcycle": 101,
+    "motorcyclist": 77,
+    "bicycle": 94,
+    "cyclist": 75,
+    "pedestrian": 822,
+    "sign": 1380,
+    "traffic_light": 806
+   },
+   "label_origin": {
+    "human": 16685
+   },
+   "raw_instances_analyzed": 16685,
+   "resolve_log": {
+    "deoverlap_clipped": 3693,
+    "drop_short_side_pedestrian": 1147,
+    "drop_short_side_sign": 3242,
+    "drop_short_side_traffic_light": 1998,
+    "drop_short_side_car": 1976,
+    "images_resolved": 752,
+    "unmatched_rider_dropped": 3,
+    "drop_token_@ignore": 3,
+    "drop_small_car": 275,
+    "drop_small_pedestrian": 57,
+    "drop_short_side_bus": 35,
+    "drop_small_sign": 85,
+    "merged_motorcyclist": 111,
+    "riders_attached": 239,
+    "unmatched_rider_kept": 70,
+    "drop_short_side_motorcycle": 37,
+    "drop_short_side_motorcyclist": 71,
+    "merged_cyclist": 117,
+    "drop_short_side_cyclist": 59,
+    "drop_short_side_truck": 71,
+    "drop_small_traffic_light": 36,
+    "drop_short_side_bicycle": 45,
+    "deoverlap_fully_hidden": 6,
+    "drop_small_truck": 9,
+    "drop_small_cyclist": 9,
+    "drop_small_motorcyclist": 6,
+    "drop_short_side_other_vehicle": 12,
+    "drop_small_bus": 6,
+    "drop_small_bicycle": 18,
+    "drop_small_motorcycle": 8,
+    "drop_small_other_vehicle": 2
+   },
+   "dropped_small": 8693,
+   "res_median": [
+    3264,
+    2448
+   ],
+   "res_min": [
+    800,
+    600
+   ],
+   "res_max": [
+    5376,
+    3936
+   ],
+   "inst_per_img_median": 9.0,
+   "inst_per_img_p90": 18.0,
+   "short_side_pct": {
+    "p10": 0.3125000000000014,
+    "p50": 1.125000000000003,
+    "below_1_25": 52.9457596643692
    },
    "night_share": 0.02666666666666667
   },
@@ -3777,50 +4863,57 @@
      "rule": false
     }
    ],
-   "analysis_mode": "sample 300",
-   "n_analyzed": 300,
+   "analysis_mode": "full (work/converted)",
+   "n_analyzed": 3475,
    "estimated_classes": {
-    "car": 24464,
-    "bus": 452,
-    "truck": 556,
-    "other_vehicle": 208,
-    "motorcycle": 683,
-    "motorcyclist": 220,
-    "bicycle": 2525,
-    "cyclist": 1402,
-    "pedestrian": 11271,
-    "sign": 8954,
-    "traffic_light": 3209
+    "car": 21917,
+    "bus": 427,
+    "truck": 479,
+    "other_vehicle": 321,
+    "motorcycle": 501,
+    "motorcyclist": 194,
+    "bicycle": 2250,
+    "cyclist": 1348,
+    "pedestrian": 10367,
+    "sign": 7772,
+    "traffic_light": 3470
    },
    "label_origin": {
-    "human": 8742
+    "human": 98735
    },
-   "raw_instances_analyzed": 8742,
+   "raw_instances_analyzed": 98735,
    "resolve_log": {
-    "deoverlap_clipped": 2654,
-    "drop_short_side_car": 683,
-    "drop_short_side_sign": 1429,
-    "drop_short_side_traffic_light": 694,
-    "drop_short_side_pedestrian": 953,
-    "images_resolved": 300,
-    "merged_cyclist": 154,
-    "riders_attached": 179,
-    "unmatched_rider_dropped": 27,
-    "drop_token_@ignore": 27,
-    "drop_short_side_bicycle": 53,
-    "drop_short_side_cyclist": 31,
-    "drop_short_side_truck": 4,
-    "deoverlap_fully_hidden": 2,
-    "drop_short_side_bus": 3,
-    "merged_motorcyclist": 22,
-    "drop_small_car": 3,
-    "drop_short_side_motorcyclist": 3,
-    "drop_short_side_motorcycle": 14,
-    "drop_short_side_other_vehicle": 3,
-    "drop_small_pedestrian": 3,
-    "drop_small_bicycle": 1
+    "merged_cyclist": 1733,
+    "riders_attached": 1992,
+    "deoverlap_clipped": 29849,
+    "drop_short_side_car": 7359,
+    "drop_short_side_sign": 16319,
+    "drop_short_side_pedestrian": 10185,
+    "images_resolved": 3475,
+    "drop_short_side_traffic_light": 8167,
+    "drop_small_sign": 663,
+    "drop_small_car": 2211,
+    "drop_short_side_bicycle": 588,
+    "drop_small_motorcycle": 36,
+    "drop_short_side_motorcycle": 101,
+    "merged_motorcyclist": 244,
+    "drop_small_traffic_light": 200,
+    "drop_small_bicycle": 235,
+    "drop_short_side_bus": 44,
+    "drop_short_side_cyclist": 362,
+    "drop_small_pedestrian": 692,
+    "drop_small_bus": 6,
+    "deoverlap_fully_hidden": 31,
+    "unmatched_rider_dropped": 304,
+    "drop_token_@ignore": 304,
+    "drop_short_side_truck": 74,
+    "drop_short_side_other_vehicle": 24,
+    "drop_short_side_motorcyclist": 50,
+    "drop_small_truck": 22,
+    "drop_small_other_vehicle": 3,
+    "drop_small_cyclist": 21
    },
-   "dropped_small": 3870,
+   "dropped_small": 43273,
    "res_median": [
     2048,
     1024
@@ -3833,14 +4926,14 @@
     2048,
     1024
    ],
-   "inst_per_img_median": 15.0,
-   "inst_per_img_p90": 25.100000000000023,
+   "inst_per_img_median": 13.0,
+   "inst_per_img_p90": 23.0,
    "short_side_pct": {
-    "p10": 0.49999999999999767,
-    "p50": 1.3750000000000013,
-    "below_1_25": 45.47014413177762
+    "p10": 0.4999999999999949,
+    "p50": 1.4374999999999916,
+    "below_1_25": 44.79161391603788
    },
-   "night_share": 0.18666666666666668
+   "night_share": 0.22666666666666666
   }
  ]
 }

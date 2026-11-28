@@ -1,0 +1,60 @@
+# VN-only val: ảnh VN chưa dùng để train v2 (scripts/build_vn_val.py). Không đổi v2.
+# Cấu hình chạy pipeline (bản thật). Bản demo: configs/pipeline_demo.yaml
+data_root: raw                 # thư mục chứa dữ liệu gốc đã tải
+work_dir: work_vnval
+out_dir: dataset_vnval
+classes: configs/classes_v2.yaml
+sources: configs/sources_v2.yaml
+seed: 15                       # = TEAM_ID của đội (seed BTC cấp)
+workers: 8
+
+# ---- Nhãn thiếu (partial) ----
+# require_completion : ảnh của nguồn partial chỉ được dùng khi đã chạy bước teacher (stage "complete")
+# allow              : dùng luôn (chấp nhận false negative) — không khuyến nghị
+partial_label_policy: require_completion
+
+# ---- Teacher / SAM (cần GPU) ----
+sam_model: models/sam2.1_b.pt   # hoặc sam3.pt (xin quyền trên Hugging Face)
+teacher_model: models/teacher_v1.pt   # checkpoint 11 lớp của v1 (Colab/Kaggle best.pt)
+teacher_mode: v2                 # teacher 11 lớp, tuỳ chọn theo nguồn (teacher_replace / teacher_fill)
+teacher_sources: [vn_traffic_sign_hf, roboflow_vn_traffic_v2i, roboflow_traffic_vn]
+teacher_imgsz: 640
+teacher_class_conf: {sign: 0.4, traffic_light: 0.4, other_vehicle: 0.4}
+teacher_conf: 0.5
+
+# ---- Loại trùng ----
+dedupe:
+  hamming_thr: 4                # pHash 64-bit; <=4 coi là cùng ảnh
+  max_per_group: 400            # trần số khung hình / 1 chuỗi video (group)
+
+# ---- Gắn điều kiện ----
+conditions:
+  night_luma_thr: 70            # độ sáng trung bình (0-255) dưới ngưỡng -> night
+
+# ---- Chia tập ----
+split:
+  val_fallback: true            # chưa có ảnh VN tự gán -> val/test lấy theo group từ mọi nguồn nhãn đầy đủ
+  val_fraction: 0.15            # tính trên các group của nguồn use_for_val (CHỈ ảnh VN)
+  test_fraction: 0.05
+
+# ---- Cân bằng (chọn ảnh cho tập train) ----
+balance:
+  target_instances_per_class: 20000   # mục tiêu như nhau cho mọi class
+  max_images: 60000                   # ngân sách ảnh train
+  always_include_domains: [vn]        # giữ toàn bộ ảnh VN có nhãn đầy đủ
+  min_domain_share: {vn: 0.35}        # tối thiểu 35% ảnh train là ảnh VN (bù bằng lặp ảnh nếu thiếu)
+  condition_bonus: {night: 0.25, rain: 0.25, fog: 0.15, snow: 0.0}
+  overshoot_penalty: 0.05             # phạt mỗi instance của class đã vượt quá overshoot_free_ratio × T
+  overshoot_free_ratio: 1.5           # class được phép vượt target tới 1.5×T mà không bị phạt
+  batch_size: 256                     # số ảnh chọn mỗi vòng greedy
+  background_fraction: 0.02           # ảnh không có đối tượng (giảm false positive)
+  # Repeat-factor sampling (LVIS) trên tập đã chọn:
+  rfs_threshold: 0.30            # 11 class: 0.3 = class xuất hiện trong <30% ảnh sẽ được lặp
+  rfs_max_repeat: 4
+
+# ---- Xuất ----
+export:
+  max_side: 640                 # resize cạnh dài (train ở 640 nên không mất thông tin)
+  jpeg_quality: 92
+  make_zip: true                # du_lieu.zip đúng cấu trúc BTC (images/, labels/, data.yaml)
+  zip_name: du_lieu_vnval.zip

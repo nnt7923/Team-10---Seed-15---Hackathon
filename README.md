@@ -269,15 +269,15 @@ AP@50 từng lớp trên public của v2t (epoch 28):
 |---|---:|---:|---:|---:|
 | Ô tô con | 52.4 | 51.9 | 52.2 | −0.3 |
 | Xe buýt / xe khách | 41.1 | 34.1 | **52.6** | **+11.5** |
-| Xe tải | 41.1 | 36.6 | 40.0 | −1.1 |
+| Xe tải | 41.1 | 36.6 | 40.0 | −1.2 |
 | Phương tiện khác | 8.1 | 8.5 | **12.6** | +4.5 |
 | Xe máy (không người) | 25.6 | 30.8 | 29.5 | +3.9 |
 | Xe máy (có người) | 48.4 | 46.7 | 49.5 | +1.1 |
-| Xe đạp (không người) | 12.4 | 21.7 | **24.7** | **+12.3** |
+| Xe đạp (không người) | 12.4 | 21.7 | **24.7** | **+12.4** |
 | Xe đạp (có người) | 55.7 | 45.6 | 54.0 | −1.7 |
-| Người đi bộ | 36.4 | 33.5 | 34.7 | −1.7 |
+| Người đi bộ | 36.4 | 33.5 | 34.7 | −1.6 |
 | Biển báo | 16.2 | 13.7 | 15.5 | −0.7 |
-| Đèn giao thông | 38.6 | 34.9 | 34.7 | −3.9 |
+| Đèn giao thông | 38.6 | 34.9 | 34.7 | −4.0 |
 
 Bài học rút ra:
 * **Ảnh VN là phần không thể thiếu.** Bỏ ảnh VN (v3) làm giảm mạnh bus, truck và cyclist.
@@ -285,6 +285,38 @@ Bài học rút ra:
 * **Train đủ lịch rồi mới chọn checkpoint.** Ở cả v1 và v2, điểm tăng ở các epoch cuối khi lr thấp và mosaic đã tắt.
 * **Biển báo vẫn yếu (~15)** ở mọi phương án, kể cả khi dán thêm biển lên cột. Đây là khác biệt giữa ảnh của ta và
   ảnh BTC chấm, không phải do thiếu số lượng.
+
+### 9.1 Tập val 100% ảnh Việt Nam
+
+[data/scripts/split_vn_val.py](data/scripts/split_vn_val.py) tách một phần ảnh VN của `dataset_v2` ra làm val.
+Cách tách: **theo video**, nên mọi khung hình của một video val đều rời khỏi train. Các file v2 gốc giữ nguyên;
+script ghi thêm `val_vn.txt`, `train_vnsplit.txt` (28,636 dòng, trước là 30,424) và `data_vnval.yaml`.
+
+| Nguồn | Ảnh | Video | Video vào val | Ảnh val |
+|---|---:|---:|---:|---:|
+| Roboflow vn_traffic v2 | 2,722 | 253 | 32 | 419 |
+| Vietnam Traffic Sign | 2,406 | 65 | 10 | 391 |
+| Roboflow Traffic_VN | 26 | 1 | 1 | 26 |
+| **Tổng** | | | **43** | **836** |
+
+Chấm trên tập này (conf 0.001, IoU 0.7, max_det 100):
+
+| Model | mask mAP@50 | 100·√mAP50 | Ghi chú |
+|---|---:|---:|---|
+| v2t epoch 31 | 0.727 | 85.3 | đã train trên các ảnh này → điểm bị thổi phồng |
+| v2t epoch 29 | 0.717 | 84.7 | như trên |
+| v1k | 0.620 | 78.7 | như trên |
+| v3t | 0.484 | 69.6 | **chưa từng thấy ảnh VN** → điểm công bằng |
+
+v2t được train **trước** khi tách tập này, nên con số của v2t/v1k chỉ cho thấy độ khớp với dữ liệu đã học. Đó không
+phải khả năng tổng quát. Dù vậy, thứ hạng vẫn khớp với bảng public. Nhãn người / xe hai bánh trên các ảnh này một
+phần do teacher sinh, nên điểm còn cao hơn nữa. Lần train sau nên dùng `data_vnval.yaml` để có một val VN thật sự
+tách rời. Tốt nhất là gán tay một tập ảnh VN mới.
+
+Ta đã thử lấy ảnh VN **chưa** dùng để train ([data/scripts/build_vn_val.py](data/scripts/build_vn_val.py)). Kết
+quả: 1,156 ảnh chưa dùng, nhưng chỉ 4 ảnh có pHash cách mọi ảnh train hơn 10. Số còn lại là khung kề hoặc bản xuất
+lại của ảnh train. Bộ rf_vietnam_vehicles chưa dùng gồm ảnh web chụp một xe, thiếu nhãn người và biển, nên cũng
+không phù hợp.
 
 ## 10. Chạy lại từ đầu
 
@@ -378,8 +410,9 @@ train/
 
 ## 13. Hạn chế đã biết
 
-* **Val không phải ảnh VN.** Val lấy từ IDD/Mapillary/Cityscapes nên điểm tuyệt đối cao hơn test thật. Tuy vậy,
-  thứ hạng giữa các model trên val khớp với public.
+* **Val chính không phải ảnh VN.** Val chính lấy từ IDD/Mapillary/Cityscapes nên điểm tuyệt đối cao hơn test thật.
+  Tuy vậy, thứ hạng giữa các model trên val này khớp với public. Val VN (mục 9.1) tách sau khi đã train, nên chưa
+  dùng được để chọn model.
 * **Nhãn teacher** (khoảng 28k instance trên các nguồn VN, COCO, nuImages) chưa được người duyệt hết.
 * **Nhiễu so với guideline BTC:**
   * COCO/nuImages gán bán tải và xe 9–15 chỗ là truck/bus.

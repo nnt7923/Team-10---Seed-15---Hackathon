@@ -13,7 +13,7 @@ Mỗi ảnh có metadata nguồn gốc đầy đủ. Bảng bộ dữ liệu cho
 > Model và kích thước ảnh cố định (`yolo26n-seg`, 640), nên thứ duy nhất ta cải thiện được là dữ liệu.
 > Điểm hiển thị trên trang thi = **100 × √(mask mAP@50)**, trung bình đều 11 lớp. Vì vậy lớp hiếm nặng ngang lớp phổ biến.
 
-**Kết quả:** v2 đạt **60.30** điểm public (mask mAP@50 = 36.36), cao nhất trong các phương án đã thử (mục 9).
+**Kết quả:** v2 đạt **60.68** điểm public (checkpoint epoch 32, mask mAP@50 ≈ 36.82), cao nhất trong các phương án đã thử (mục 9).
 
 ![Tổng quan pipeline](data/docs/images/pipeline_overview.png)
 
@@ -212,17 +212,18 @@ Tỉ lệ ảnh VN trong luồng train tăng từ 11.4% lên **35.5%**. Biểu �
 | Dữ liệu | `du_lieu_v2.zip`: 21,238 ảnh train (30,424 dòng sau RFS), val 2,166, test 761 |
 | Phần cứng | 1 × NVIDIA RTX A6000 48 GB (Thunder Compute), PyTorch 2.15 + CUDA 13.2 |
 | Thời gian | 35 epoch theo lịch. Từ epoch 23, chạy tiếp (`--resume`) trên máy thứ hai nhanh hơn, mỗi epoch ~14–17 phút |
-| Checkpoint đã nộp | `runs/v2t/weights/last.pt` ở epoch 28 → `models/v2t_ep28/submission.zip` |
+| Checkpoint đã nộp | `runs/v2t/weights/last.pt` ở **epoch 32** → `models/v2t_ep32/submission.zip` (public **60.68**). Trước đó epoch 28 → 60.30 |
 | Bài nộp (ONNX) | fp32, opset 17, input `[1,3,640,640]`, output `[1,47,8400]` + proto `[1,32,160,160]`; `model.onnx` 10.6 MB, zip 9.7 MB |
 | Kiểm tra BTC | Đạt: chữ ký kiến trúc yolo26n-seg, nc = 11, có tên lớp trong metadata |
 | Hậu xử lý khi chấm (BTC) | conf 0.001, IoU NMS 0.7, max_det 100, multi-label; GT < 64 px² ở 640 bị bỏ qua |
 
 mask mAP trên val v2 theo epoch (đo bằng bộ validator Ultralytics với cùng hậu xử lý):
 
-| Epoch | 1 | 12 | 22 | 25 | 26 (tắt mosaic) | 28 | 29 |
+| Epoch | 1 | 12 | 22 | 26 (tắt mosaic) | 28 | 30 | **32** |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| mask mAP@50 | 0.393 | 0.465 | 0.508 | 0.512 | 0.516 | **0.519** | 0.519 |
-| mask mAP@50-95 | 0.209 | 0.257 | 0.283 | 0.286 | 0.288 | **0.290** | 0.290 |
+| mask mAP@50 | 0.393 | 0.465 | 0.508 | 0.516 | 0.519 | 0.520 | **0.522** |
+| mask mAP@50-95 | 0.209 | 0.257 | 0.283 | 0.288 | 0.290 | 0.291 | **0.292** |
+| Public (100·√mAP50) | | | | | 60.30 | | **60.68** |
 
 ### 8.2 Huấn luyện
 
@@ -261,9 +262,10 @@ và tên lớp, rồi đóng gói `submission.zip` (một file `model.onnx`, ~9.
 | v1k, 40 epoch (Kaggle) | v1 | 58.46 | 34.18 | |
 | v3t, 25 epoch | **chỉ nhãn người** (IDD/Cityscapes/Mapillary) + 3.6k ảnh **copy-paste có ngữ cảnh** | 57.04 | 32.53 | xe máy/xe đạp không người tăng, nhưng mất ảnh VN nên bus/truck/cyclist giảm |
 | Trộn trọng số v1k + v3t (hoặc + v2t) | | (val 0.503 ở 50/50) | | thấp hơn cả hai model gốc; đã loại |
-| **v2t, epoch 28** | **v2** | **60.30** | **36.36** | **bản chốt** |
+| v2t, epoch 28 | v2 | 60.30 | 36.36 | |
+| **v2t, epoch 32** | **v2** | **60.68** | **≈ 36.82** | **bản chốt** |
 
-AP@50 từng lớp trên public của v2t (epoch 28):
+AP@50 từng lớp trên public của v2t (đo ở bài nộp epoch 28; bản chốt epoch 32 chưa có chi tiết từng lớp):
 
 | Lớp | v1k | v3t | v2t | Chênh v2t so với v1k |
 |---|---:|---:|---:|---:|
